@@ -507,6 +507,9 @@ span.inline-flex.items-center.gap-2.rounded-md.bg-\[var\(--success-soft\)\].text
 }
 /* end calender css booking page  */
 
+.viewdeatilscardwidthset{
+  width: 460px;
+}
 
 @media screen and (max-width: 700px) {
   .menuiconmenu{

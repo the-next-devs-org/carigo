@@ -120,7 +120,7 @@ const VehicleSearch = () => {
               })();
 
               return (
-                <div key={i} className="relative min-w-[230px] rounded-xl bg-card p-3 shadow-sm bg-white">
+                <div key={i} className="relative min-w-[178px] rounded-xl bg-card p-3 shadow-sm bg-white">
                   <div className="text-sm text-muted-foreground">{s.label}</div>
                   <div className="mt-1 text-2xl font-semibold text-foreground">{s.value}</div>
                   <div className="absolute bottom-3 right-3">{icon}</div>
@@ -129,7 +129,7 @@ const VehicleSearch = () => {
             })}
           </div>
 
-          
+
         </div>
       </section>
 
@@ -158,7 +158,7 @@ const VehicleSearch = () => {
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            
+
 
             <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
               Drivmedel
@@ -194,16 +194,16 @@ const VehicleSearch = () => {
       <main className="mx-auto max-w-6xl px-5 py-8">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-xl font-semibold text-pretty">Pristruktur</h1>
-          <button 
+          <button
             onClick={handleOpenModal}
             className="bg-blue-600 text-white px-[10px] py-[8px] rounded-[10px] hover:bg-blue-700 transition">
             Lägg till fordon
           </button>
-            <AddNewVehicle
-              open={isModalOpen}
-              onClose={handleCloseModal}
-              onSuccess={handleSuccess}
-            />
+          <AddNewVehicle
+            open={isModalOpen}
+            onClose={handleCloseModal}
+            onSuccess={handleSuccess}
+          />
         </div>
 
 
@@ -249,40 +249,36 @@ const VehicleSearch = () => {
           </div>
 
           {modalOpen_xyz && currentCar_xyz && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-              <div className="w-full max-w-md max-h-[90vh] bg-white rounded-lg shadow-lg overflow-y-auto">
-                <div className="bg-gray-100 px-4 py-3 flex items-center justify-between border-b border-gray-200">
+            <div className="fixed inset-0 z-50 flex items-start justify-end bg-black/50 backdrop-blur-sm">
+              <div className="viewdeatilscardwidthset h-full bg-white shadow-lg flex flex-col transform transition-transform duration-300
+                    overflow-hidden
+                    translate-x-0">
+
+                {/* Header */}
+                <div className="bg-gray-100 px-4 py-3 flex items-center justify-between border-b border-gray-200 flex-shrink-0">
                   <div>
-                    <h2 className="text-base font-semibold text-gray-900">Registreringsnummer ABC 133 -</h2>
+                    <h2 className="text-base font-semibold text-gray-900">
+                      Registreringsnummer ABC 133 -
+                    </h2>
                     <p className="text-sm text-gray-600">Volvo 7i20</p>
                   </div>
-                  <button className="text-gray-500 hover:text-gray-700" onClick={closeModal_xyz}>
+                  <button
+                    className="text-gray-500 hover:text-gray-700"
+                    onClick={closeModal_xyz}
+                  >
                     <X size={20} />
                   </button>
                 </div>
 
-                <div className="flex border-b border-gray-200 px-4">
+                {/* Main Tabs */}
+                <div className="flex border-b border-gray-200 px-4 flex-shrink-0">
                   {mainTabs.map((tab) => (
                     <button
                       key={tab.id}
                       onClick={() => setActiveMainTab(tab.id)}
                       className={`fontsizeovermaintabs px-3 py-3 text-sm font-medium border-b-2 transition-colors ${activeMainTab === tab.id
-                          ? "border-blue-500 text-blue-600"
-                          : "border-transparent text-gray-600 hover:text-gray-900"
-                        }`}
-                    >
-                      {tab.label}
-                    </button>
-                  ))}
-                </div>
-                <br></br>
-                <span className="grundata">Grundata</span>
-                <div className="flex gap-2 px-4 py-3 bg-gray-50 overflow-x-auto">
-                  {subTabs.map((tab) => (
-                    <button
-                      key={tab.id}
-                      onClick={() => setActiveSubTab(tab.id)}
-                      className={`px-4 py-2 text-sm font-medium rounded whitespace-nowrap transition-colors ${activeSubTab === tab.id ? "bg-blue-500 text-white" : "bg-white text-gray-700 hover:bg-gray-100"
+                        ? "border-blue-500 text-blue-600"
+                        : "border-transparent text-gray-600 hover:text-gray-900"
                         }`}
                     >
                       {tab.label}
@@ -290,9 +286,29 @@ const VehicleSearch = () => {
                   ))}
                 </div>
 
-                <div className="p-4 space-y-4">
+                {/* Sub Tabs */}
+                <div className="flex gap-2 px-4 py-3 bg-gray-50 overflow-x-auto flex-shrink-0">
+                  {subTabs.map((tab) => (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveSubTab(tab.id)}
+                      className={`px-4 py-2 text-sm font-medium rounded whitespace-nowrap transition-colors ${activeSubTab === tab.id
+                        ? "bg-blue-500 text-white"
+                        : "bg-white text-gray-700 hover:bg-gray-100"
+                        }`}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Modal Content (scrollable) */}
+                <div className="p-4 space-y-4 overflow-y-auto flex-1">
+                  {/* Regnty */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Regnty</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Regnty
+                    </label>
                     <div className="relative">
                       <select className="w-full px-3 py-2 bg-white border border-gray-300 rounded text-gray-700 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option>Reg.nr. ABC 123</option>
@@ -305,8 +321,11 @@ const VehicleSearch = () => {
                     </div>
                   </div>
 
+                  {/* Årsmodell */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Årsmodell</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Årsmodell
+                    </label>
                     <div className="relative">
                       <select className="w-full px-3 py-2 bg-white border border-gray-300 rounded text-gray-700 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <option>Årsmodell: VIN123...</option>
@@ -319,8 +338,11 @@ const VehicleSearch = () => {
                     </div>
                   </div>
 
+                  {/* Pristruktur */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Pristruktur</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Pristruktur
+                    </label>
                     <div className="flex items-center gap-2">
                       <input
                         type="text"
@@ -340,8 +362,11 @@ const VehicleSearch = () => {
                     </div>
                   </div>
 
+                  {/* Repetition */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Repetition</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Repetition
+                    </label>
                     <div className="flex items-center gap-2">
                       <input
                         type="text"
@@ -355,13 +380,17 @@ const VehicleSearch = () => {
                     </div>
                   </div>
 
+                  {/* Deposition */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Deposition</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Deposition
+                    </label>
                     <div className="h-20 bg-gray-50 border border-gray-200 rounded"></div>
                   </div>
                 </div>
 
-                <div className="p-4 bg-white border-t border-gray-200">
+                {/* Footer */}
+                <div className="p-4 bg-white border-t border-gray-200 flex-shrink-0">
                   <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors">
                     Spara
                   </button>
@@ -369,6 +398,8 @@ const VehicleSearch = () => {
               </div>
             </div>
           )}
+
+
 
 
 
