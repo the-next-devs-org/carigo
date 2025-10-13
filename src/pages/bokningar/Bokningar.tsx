@@ -96,7 +96,7 @@ const Bokningar = () => {
                             }`;
                         const start = booking.createdAt.split("T")[0];
                         const color = booking.package_id === 2 ? "#16a34a" : "#f97316";
-
+                        console.log("Booking Data:", booking); // Debugging line`
                         return {
                             title,
                             start,
@@ -112,7 +112,7 @@ const Bokningar = () => {
                                 vehicle_image:
                                     booking.vehicle?.image_url ||
                                     booking.vehicle?.image ||
-                                    null, // 👈 now includes both possible fields
+                                    null, 
                             },
                         };
                     });
@@ -209,9 +209,9 @@ const Bokningar = () => {
                 />
 
                 {isModalOpen && selectedEvent && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 ">
+                    <div className="fixed inset-0 z-50 flex items-start justify-end bg-black/50 backdrop-blur-sm">
                         <section
-                            className="w-full max-w-md max-h-[90vh] overflow-y-auto bg-white rounded-xl border border-[var(--border)] shadow-lg"
+                            className="w-full max-w-md max-h-[100vh] overflow-y-auto bg-white border border-[var(--border)] shadow-lg"
                             role="dialog"
                             aria-labelledby="booking-title"
                         >

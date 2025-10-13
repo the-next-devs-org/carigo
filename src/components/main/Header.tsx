@@ -43,14 +43,14 @@ const Header: React.FC<HeaderProps> = () => {
     <header className="w-full bg-white border-b border-gray-100 font-plus-jakarta flex items-center justify-between h-16 lg:px-6 pr-4 lg:pl-6 pl-[72px] lg:gap-0 gap-2">
       <div className="flex-1">
         <div className="relative w-full max-w-xs">
-          <input
+          {/* <input
             type="text"
             placeholder="Search"
             className="w-full md:pl-10 pl-7 md:pr-4 pr-2 py-2.5 border border-gray-200 rounded-lg text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-gray-50"
           />
           <div className="absolute inset-y-0 left-0 md:pl-3 pl-2 flex items-center pointer-events-none">
             <SearchIcon className="h-4 w-4 text-gray-400" />
-          </div>
+          </div> */}
         </div>
       </div>
       <div
@@ -94,12 +94,12 @@ const Header: React.FC<HeaderProps> = () => {
             >
               Settings
             </button>
-            <button
+            {/* <button
               onClick={() => navigate("/users-management")}
               className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
             >
               Users Management
-            </button>
+            </button> */}
             {/* <button
               onClick={() => navigate("/roles-management")}
               className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"

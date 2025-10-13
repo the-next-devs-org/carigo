@@ -1,37 +1,53 @@
-import { useState } from "react";
-import { X, RefreshCw, Menu } from "lucide-react"
+import { useEffect, useState } from "react";
+import { X, RefreshCw } from "lucide-react";
 import AddNewVehicle from "../../components/models/AddNewVehicle";
+import axios from "axios";
+import { BACKEND_API_ENDPOINT } from "../../api/config";
 
 type CarType = {
-  id: string;
+  id: number;
   name: string;
-  mileage: string;
-  price: string;
-  img: string;
-  status: string;
+  brand: string;
+  model?: string;
+  category: string;
+  year: number;
+  color: string;
+  registration_number: string;
+  transmission?: string;
+  fuel_type?: string;
+  mileage?: number;
+  price_per_day: number;
+  price_per_week?: number;
+  deposit?: number;
+  image?: string;
+  image_url?: string;
+  extra_km_cost?: number;
+  status?: string;
+  user_id?: string;
 };
 
 const VehicleSearch = () => {
-
+  const [vehicles, setVehicles] = useState<CarType[]>([]);
+  const [loading, setLoading] = useState(false);
   const [modalOpen_xyz, setModalOpen_xyz] = useState(false);
   const [currentCar_xyz, setCurrentCar_xyz] = useState<CarType | null>(null);
-
-  const [activeMainTab, setActiveMainTab] = useState("oversikt")
-  const [activeSubTab, setActiveSubTab] = useState("oversikt-pris")
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
 
   const mainTabs = [
     { id: "oversikt", label: "Översikt & Pris" },
     { id: "tillganglighet", label: "Tillgänglighknit" },
     { id: "historik", label: "Historik" },
     { id: "dokument", label: "Dokument" },
-  ]
+  ];
 
   const subTabs = [
     { id: "oversikt-pris", label: "Översikt & Pris" },
     { id: "histori", label: "Histori" },
     { id: "service", label: "Service & Skada" },
     { id: "dokuments", label: "Dokuments" },
-  ]
+  ];
 
   const statsData = [
     { label: "Total Flotta", value: 120, iconType: "car" },
@@ -41,16 +57,31 @@ const VehicleSearch = () => {
     { label: "Kommande Service", value: 5, iconType: "clock" },
   ];
 
-  const car_xyz: CarType = {
-    id: "ABC123",
-    name: "Toyota Corolla 2022",
-    mileage: "12,450 km",
-    price: "850 kr/dygn",
-    img: "https://png.pngtree.com/png-vector/20250110/ourmid/pngtree-a-red-suv-car-in-side-view-png-image_15131280.png",
-    status: "Available",
-  };
-  const openModal_xyz = () => {
-    setCurrentCar_xyz(car_xyz);
+  const getAllVehiclesfullUrl = `${BACKEND_API_ENDPOINT}getAllVehicles`;
+
+  // Fetch vehicles from API
+  useEffect(() => {
+    const fetchVehicles = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(getAllVehiclesfullUrl);
+
+        // response.data.data contains the array of vehicles
+        const vehiclesArray = Array.isArray(response.data.data) ? response.data.data : [];
+        setVehicles(vehiclesArray);
+      } catch (err) {
+        console.error("Error fetching vehicles:", err);
+        setVehicles([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchVehicles();
+  }, []);
+
+  const openModal_xyz = (vehicle: CarType) => {
+    setCurrentCar_xyz(vehicle);
     setModalOpen_xyz(true);
   };
 
@@ -59,19 +90,78 @@ const VehicleSearch = () => {
     setModalOpen_xyz(false);
   };
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
-
   const handleSuccess = () => {
     setIsModalOpen(false);
-    // Optionally refresh vehicle list here
-    console.log("Vehicle added or updated successfully!");
   };
 
+  const [activeMainTab, setActiveMainTab] = useState("oversikt");
+  const [activeSubTab, setActiveSubTab] = useState("oversikt-pris");
+
+  // VehicleSearch component ke andar
+  const fetchVehicles = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(getAllVehiclesfullUrl);
+      const vehiclesArray = Array.isArray(response.data.data) ? response.data.data : [];
+      setVehicles(vehiclesArray);
+    } catch (err) {
+      console.error(err);
+      setVehicles([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // useEffect me bhi call karenge initially
+  useEffect(() => {
+    fetchVehicles();
+  }, []);
+
+  const filteredVehicles = vehicles.filter((vehicle) => {
+    // Search filter
+    const matchesSearch =
+      vehicle.registration_number.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (vehicle.model?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false) ||
+      vehicle.name.toLowerCase().includes(searchQuery.toLowerCase());
+
+    // Filter button (optional)
+    let matchesFilter = true;
+    if (activeFilter) {
+      switch (activeFilter) {
+        case "Drivmedel":
+          matchesFilter = vehicle.fuel_type?.toLowerCase().includes("fuel") ?? false;
+          break;
+        case "Biltyp":
+          matchesFilter = vehicle.category.toLowerCase().includes("bil") ?? false;
+          break;
+        case "Pris":
+          matchesFilter = vehicle.price_per_day > 0;
+          break;
+        case "Modellår":
+          matchesFilter = vehicle.year >= 2000; // example filter
+          break;
+        case "Miltal":
+          matchesFilter = vehicle.mileage !== undefined;
+          break;
+        case "Växellåda":
+          matchesFilter = !!vehicle.transmission;
+          break;
+        case "Säljare":
+          matchesFilter = !!vehicle.user_id; // example
+          break;
+        default:
+          matchesFilter = true;
+      }
+    }
+
+    return matchesSearch && matchesFilter;
+  });
+
+
   return (
-    <div className=" max-w-full mx-auto font-plus-jakarta">
+    <div className="max-w-full mx-auto font-plus-jakarta">
       <section aria-label="Fordonsstatistik" className="w-full rounded-2xl bg-muted/50 p-4">
         <div className="flex items-start justify-between gap-4">
           <div className="flex w-full gap-4 overflow-x-auto pb-2">
@@ -128,16 +218,11 @@ const VehicleSearch = () => {
               );
             })}
           </div>
-
-
         </div>
       </section>
 
-      <div
-        role="toolbar"
-        aria-label="Fordonsregister filter"
-        className="mavchassinummersearch rounded-xl bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/75"
-      >
+      {/* Toolbar filters */}
+      <div role="toolbar" aria-label="Fordonsregister filter" className="mavchassinummersearch rounded-xl bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/75">
         <div className="flex items-center gap-2 justify-between">
           <div className="relative">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground">
@@ -154,39 +239,24 @@ const VehicleSearch = () => {
               aria-label="Sök"
               placeholder="Sök Reg.nr, Modell eller Chassinummer..."
               className="chassinummersearch shadow-sm h-9 w-[280px] sm:w-[360px] md:w-[480px] rounded-md border border-input bg-card pl-9 pr-3 text-sm text-foreground placeholder:text-muted-foreground/70 shadow-inner focus:outline-none focus:ring-2 focus:ring-ring/30"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
+
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
+            {["Drivmedel", "Biltyp", "Pris", "Modellår", "Miltal", "Växellåda", "Säljare"].map((btn, i) => (
+              <button
+                key={i}
+                className={`rounded-full border border-gray-300 px-3 py-1.5 text-sm shadow-sm transition ${activeFilter === btn ? "bg-blue-500 text-white" : "bg-white text-gray-800 hover:bg-gray-100"
+                  }`}
+                onClick={() => setActiveFilter(activeFilter === btn ? null : btn)}
+              >
+                {btn}
+              </button>
+            ))}
 
-
-            <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
-              Drivmedel
-            </button>
-
-            <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
-              Biltyp
-            </button>
-
-            <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
-              Pris
-            </button>
-
-            <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
-              Modellår
-            </button>
-
-            <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
-              Miltal
-            </button>
-
-            <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
-              Växellåda
-            </button>
-
-            <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
-              Säljare
-            </button>
           </div>
         </div>
       </div>
@@ -202,65 +272,79 @@ const VehicleSearch = () => {
           <AddNewVehicle
             open={isModalOpen}
             onClose={handleCloseModal}
-            onSuccess={handleSuccess}
+            onSuccess={() => {
+              handleCloseModal();
+              fetchVehicles();
+            }}
           />
         </div>
 
-
         <section aria-label="Fordonskort" className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {loading && <p>Loading vehicles...</p>}
 
-          <div
-            className="max-w-full mx-auto font-plus-jakarta cursor-pointer"
-            onClick={openModal_xyz}
-          >
-            <div className="bg-card bg-white text-card-foreground rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex min-w-0 flex-col gap-2">
-                  <div>
-                    <h3 className="text-lg font-semibold tracking-tight">{car_xyz.id}</h3>
-                    <p className="text-sm text-gray-500">{car_xyz.name}</p>
+          {!loading && filteredVehicles.length === 0 && (
+            <p className="text-gray-500 col-span-full">Inga fordon hittades.</p>
+          )}
+
+          {!loading && filteredVehicles.map((vehicle) => (
+            <div
+              key={vehicle.id}
+              className="max-w-full mx-auto font-plus-jakarta cursor-pointer"
+              onClick={() => openModal_xyz(vehicle)}
+            >
+              <div className="bg-card bg-white text-card-foreground rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex min-w-0 flex-col gap-2">
+                    <div>
+                      <h3 className="text-lg font-semibold tracking-tight">{vehicle.registration_number}</h3>
+                      <p className="text-sm text-gray-500">{vehicle.brand} {vehicle.model}</p>
+                    </div>
+                    {(vehicle.status === "Active" || vehicle.status === "Inactive") && (
+                      <span
+                        className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${vehicle.status === "Active"
+                          ? "bg-green-100 text-green-700"
+                          : "bg-red-100 text-red-700"
+                          }`}
+                      >
+                        {vehicle.status}
+                      </span>
+                    )}
                   </div>
-                  <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
-                    {car_xyz.status}
-                  </span>
+
+                  <div className="relative h-[110px] w-[220px] shrink-0">
+                    <img
+                      src={vehicle.image_url || "https://via.placeholder.com/220x110.png?text=No+Image"}
+                      className="object-contain cardcardimage h-full w-full rounded-lg"
+                    />
+                  </div>
                 </div>
 
-                <div className="relative h-[110px] w-[220px] shrink-0">
-                  <img
-                    src={car_xyz.img}
-                    alt={car_xyz.name}
-                    className="object-contain cardcardimage h-full w-full rounded-lg"
-                  />
+                <div className="mt-5 grid grid-cols-[1fr_auto] items-end gap-3">
+                  <div className="flex flex-col gap-2 text-sm">
+                    <p className="text-gray-500">
+                      <span className="font-medium text-gray-800">Mätarställning:</span> {vehicle.mileage ?? "N/A"} km
+                    </p>
+                    <p className="text-gray-500">
+                      <span className="font-medium text-gray-800">Baspris/dygn</span>
+                    </p>
+                  </div>
+                  <p className="text-right text-lg font-semibold text-gray-800">{vehicle.price_per_day} kr/dygn</p>
                 </div>
-              </div>
-
-              <div className="mt-5 grid grid-cols-[1fr_auto] items-end gap-3">
-                <div className="flex flex-col gap-2 text-sm">
-                  <p className="text-gray-500">
-                    <span className="font-medium text-gray-800">Mätarställning:</span> {car_xyz.mileage}
-                  </p>
-                  <p className="text-gray-500">
-                    <span className="font-medium text-gray-800">Baspris/dygn</span>
-                  </p>
-                </div>
-                <p className="text-right text-lg font-semibold text-gray-800">{car_xyz.price}</p>
               </div>
             </div>
-          </div>
+          ))}
 
+          {/* Vehicle detail modal */}
           {modalOpen_xyz && currentCar_xyz && (
             <div className="fixed inset-0 z-50 flex items-start justify-end bg-black/50 backdrop-blur-sm">
-              <div className="viewdeatilscardwidthset h-full bg-white shadow-lg flex flex-col transform transition-transform duration-300
-                    overflow-hidden
-                    translate-x-0">
-
+              <div className="viewdeatilscardwidthset h-full bg-white shadow-lg flex flex-col transform transition-transform duration-300 overflow-hidden translate-x-0">
                 {/* Header */}
                 <div className="bg-gray-100 px-4 py-3 flex items-center justify-between border-b border-gray-200 flex-shrink-0">
                   <div>
                     <h2 className="text-base font-semibold text-gray-900">
-                      Registreringsnummer ABC 133 -
+                      Registreringsnummer {currentCar_xyz.registration_number}
                     </h2>
-                    <p className="text-sm text-gray-600">Volvo 7i20</p>
+                    <p className="text-sm text-gray-600">{currentCar_xyz.brand} {currentCar_xyz.model}</p>
                   </div>
                   <button
                     className="text-gray-500 hover:text-gray-700"
@@ -302,16 +386,14 @@ const VehicleSearch = () => {
                   ))}
                 </div>
 
-                {/* Modal Content (scrollable) */}
+                {/* Modal Content */}
                 <div className="p-4 space-y-4 overflow-y-auto flex-1">
                   {/* Regnty */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Regnty
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Regnty</label>
                     <div className="relative">
                       <select className="w-full px-3 py-2 bg-white border border-gray-300 rounded text-gray-700 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <option>Reg.nr. ABC 123</option>
+                        <option>Reg.nr. {currentCar_xyz.registration_number}</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -323,12 +405,10 @@ const VehicleSearch = () => {
 
                   {/* Årsmodell */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Årsmodell
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Årsmodell</label>
                     <div className="relative">
                       <select className="w-full px-3 py-2 bg-white border border-gray-300 rounded text-gray-700 appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        <option>Årsmodell: VIN123...</option>
+                        <option>Årsmodell: {currentCar_xyz.year}</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -340,321 +420,22 @@ const VehicleSearch = () => {
 
                   {/* Pristruktur */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Pristruktur
-                    </label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Pristruktur</label>
                     <div className="flex items-center gap-2">
-                      <input
-                        type="text"
-                        value="Pris/dygn: 88/4Tr"
-                        readOnly
-                        className="flex-1 px-3 py-2 bg-white border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
-                      <input
-                        type="text"
-                        value="2 kr/km"
-                        readOnly
-                        className="w-24 px-3 py-2 bg-white border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
+                      <input type="text" value={`Pris/dygn: ${currentCar_xyz.price_per_day}`} readOnly className="flex-1 px-3 py-2 bg-white border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                      <input type="text" value={`${currentCar_xyz.extra_km_cost ?? 0} kr/km`} readOnly className="w-24 px-3 py-2 bg-white border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                       <button className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded">
-                        <RefreshCw size={18} />
+                        <RefreshCw size={16} />
                       </button>
                     </div>
                   </div>
-
-                  {/* Repetition */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Repetition
-                    </label>
-                    <div className="flex items-center gap-2">
-                      <input
-                        type="text"
-                        value="Km-kostem"
-                        readOnly
-                        className="flex-1 px-3 py-2 bg-white border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      />
-                      <button className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded">
-                        <Menu size={18} />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Deposition */}
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Deposition
-                    </label>
-                    <div className="h-20 bg-gray-50 border border-gray-200 rounded"></div>
-                  </div>
-                </div>
-
-                {/* Footer */}
-                <div className="p-4 bg-white border-t border-gray-200 flex-shrink-0">
-                  <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors">
-                    Spara
-                  </button>
                 </div>
               </div>
             </div>
           )}
-
-
-
-
-
-
-          {/* // dummy data */}
-          <div className="max-w-full mx-auto font-plus-jakarta">
-            <div className="bg-white bg-card text-card-foreground rounded-2xl shadow-lg p-5">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex min-w-0 flex-col gap-2">
-                  <div>
-                    <h3 className="text-lg font-semibold tracking-tight">ABC123</h3>
-                    <p className="text-sm text-gray-500">Toyota Corolla 2022</p>
-                  </div>
-
-                  <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
-                    Available
-                  </span>
-                </div>
-
-                <div className="relative h-[110px] w-[220px] shrink-0">
-                  <img
-                    src="https://png.pngtree.com/png-vector/20250110/ourmid/pngtree-a-red-suv-car-in-side-view-png-image_15131280.png"
-                    alt="Toyota Corolla 2022"
-                    className="object-contain cardcardimage h-full w-full rounded-lg"
-                  />
-                </div>
-              </div>
-
-              <div className="mt-5 grid grid-cols-[1fr_auto] items-end gap-3">
-                <div className="flex flex-col gap-2 text-sm">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-gray-500">
-                      <span className="font-medium text-gray-800">Mätarställning:</span> 12,450 km
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-gray-500">
-                      <span className="font-medium text-gray-800">Baspris/dygn</span>
-                    </p>
-                  </div>
-                </div>
-
-                <p className="text-right text-lg font-semibold text-gray-800">850 kr/dygn</p>
-              </div>
-            </div>
-          </div>
-          <div className="max-w-full mx-auto font-plus-jakarta">
-            <div className="bg-white bg-card text-card-foreground rounded-2xl shadow-lg p-5">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex min-w-0 flex-col gap-2">
-                  <div>
-                    <h3 className="text-lg font-semibold tracking-tight">ABC123</h3>
-                    <p className="text-sm text-gray-500">Toyota Corolla 2022</p>
-                  </div>
-
-                  <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
-                    Available
-                  </span>
-                </div>
-
-                <div className="relative h-[110px] w-[220px] shrink-0">
-                  <img
-                    src="https://png.pngtree.com/png-vector/20250110/ourmid/pngtree-a-red-suv-car-in-side-view-png-image_15131280.png"
-                    alt="Toyota Corolla 2022"
-                    className="object-contain cardcardimage h-full w-full rounded-lg"
-                  />
-                </div>
-              </div>
-
-              <div className="mt-5 grid grid-cols-[1fr_auto] items-end gap-3">
-                <div className="flex flex-col gap-2 text-sm">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-gray-500">
-                      <span className="font-medium text-gray-800">Mätarställning:</span> 12,450 km
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-gray-500">
-                      <span className="font-medium text-gray-800">Baspris/dygn</span>
-                    </p>
-                  </div>
-                </div>
-
-                <p className="text-right text-lg font-semibold text-gray-800">850 kr/dygn</p>
-              </div>
-            </div>
-          </div>
-          <div className="max-w-full mx-auto font-plus-jakarta">
-            <div className="bg-white bg-card text-card-foreground rounded-2xl shadow-lg p-5">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex min-w-0 flex-col gap-2">
-                  <div>
-                    <h3 className="text-lg font-semibold tracking-tight">ABC123</h3>
-                    <p className="text-sm text-gray-500">Toyota Corolla 2022</p>
-                  </div>
-
-                  <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
-                    Available
-                  </span>
-                </div>
-
-                <div className="relative h-[110px] w-[220px] shrink-0">
-                  <img
-                    src="https://png.pngtree.com/png-vector/20250110/ourmid/pngtree-a-red-suv-car-in-side-view-png-image_15131280.png"
-                    alt="Toyota Corolla 2022"
-                    className="object-contain cardcardimage h-full w-full rounded-lg"
-                  />
-                </div>
-              </div>
-
-              <div className="mt-5 grid grid-cols-[1fr_auto] items-end gap-3">
-                <div className="flex flex-col gap-2 text-sm">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-gray-500">
-                      <span className="font-medium text-gray-800">Mätarställning:</span> 12,450 km
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-gray-500">
-                      <span className="font-medium text-gray-800">Baspris/dygn</span>
-                    </p>
-                  </div>
-                </div>
-
-                <p className="text-right text-lg font-semibold text-gray-800">850 kr/dygn</p>
-              </div>
-            </div>
-          </div>
-          <div className="max-w-full mx-auto font-plus-jakarta">
-            <div className="bg-white bg-card text-card-foreground rounded-2xl shadow-lg p-5">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex min-w-0 flex-col gap-2">
-                  <div>
-                    <h3 className="text-lg font-semibold tracking-tight">ABC123</h3>
-                    <p className="text-sm text-gray-500">Toyota Corolla 2022</p>
-                  </div>
-
-                  <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
-                    Available
-                  </span>
-                </div>
-
-                <div className="relative h-[110px] w-[220px] shrink-0">
-                  <img
-                    src="https://png.pngtree.com/png-vector/20250110/ourmid/pngtree-a-red-suv-car-in-side-view-png-image_15131280.png"
-                    alt="Toyota Corolla 2022"
-                    className="object-contain cardcardimage h-full w-full rounded-lg"
-                  />
-                </div>
-              </div>
-
-              <div className="mt-5 grid grid-cols-[1fr_auto] items-end gap-3">
-                <div className="flex flex-col gap-2 text-sm">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-gray-500">
-                      <span className="font-medium text-gray-800">Mätarställning:</span> 12,450 km
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-gray-500">
-                      <span className="font-medium text-gray-800">Baspris/dygn</span>
-                    </p>
-                  </div>
-                </div>
-
-                <p className="text-right text-lg font-semibold text-gray-800">850 kr/dygn</p>
-              </div>
-            </div>
-          </div>
-          <div className="max-w-full mx-auto font-plus-jakarta">
-            <div className="bg-white bg-card text-card-foreground rounded-2xl shadow-lg p-5">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex min-w-0 flex-col gap-2">
-                  <div>
-                    <h3 className="text-lg font-semibold tracking-tight">ABC123</h3>
-                    <p className="text-sm text-gray-500">Toyota Corolla 2022</p>
-                  </div>
-
-                  <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
-                    Available
-                  </span>
-                </div>
-
-                <div className="relative h-[110px] w-[220px] shrink-0">
-                  <img
-                    src="https://png.pngtree.com/png-vector/20250110/ourmid/pngtree-a-red-suv-car-in-side-view-png-image_15131280.png"
-                    alt="Toyota Corolla 2022"
-                    className="object-contain cardcardimage h-full w-full rounded-lg"
-                  />
-                </div>
-              </div>
-
-              <div className="mt-5 grid grid-cols-[1fr_auto] items-end gap-3">
-                <div className="flex flex-col gap-2 text-sm">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-gray-500">
-                      <span className="font-medium text-gray-800">Mätarställning:</span> 12,450 km
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-gray-500">
-                      <span className="font-medium text-gray-800">Baspris/dygn</span>
-                    </p>
-                  </div>
-                </div>
-
-                <p className="text-right text-lg font-semibold text-gray-800">850 kr/dygn</p>
-              </div>
-            </div>
-          </div>
-          <div className="max-w-full mx-auto font-plus-jakarta">
-            <div className="bg-white bg-card text-card-foreground rounded-2xl shadow-lg p-5">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex min-w-0 flex-col gap-2">
-                  <div>
-                    <h3 className="text-lg font-semibold tracking-tight">ABC123</h3>
-                    <p className="text-sm text-gray-500">Toyota Corolla 2022</p>
-                  </div>
-
-                  <span className="inline-flex items-center rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-700">
-                    Available
-                  </span>
-                </div>
-
-                <div className="relative h-[110px] w-[220px] shrink-0">
-                  <img
-                    src="https://png.pngtree.com/png-vector/20250110/ourmid/pngtree-a-red-suv-car-in-side-view-png-image_15131280.png"
-                    alt="Toyota Corolla 2022"
-                    className="object-contain cardcardimage h-full w-full rounded-lg"
-                  />
-                </div>
-              </div>
-
-              <div className="mt-5 grid grid-cols-[1fr_auto] items-end gap-3">
-                <div className="flex flex-col gap-2 text-sm">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-gray-500">
-                      <span className="font-medium text-gray-800">Mätarställning:</span> 12,450 km
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="text-gray-500">
-                      <span className="font-medium text-gray-800">Baspris/dygn</span>
-                    </p>
-                  </div>
-                </div>
-
-                <p className="text-right text-lg font-semibold text-gray-800">850 kr/dygn</p>
-              </div>
-            </div>
-          </div>
-          {/* // end dummy data */}
         </section>
       </main>
-    </div >
+    </div>
   );
 };
 

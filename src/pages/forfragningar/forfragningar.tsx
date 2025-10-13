@@ -98,19 +98,6 @@ const Forfragningar: React.FC = () => {
         { name: 'Iser Elofsson', date: 'Omsak toeke kankap!', amount: '6 800 SEK' },
         { name: 'Per Jonsson', date: 'Omsak toeke kankap!', amount: '6 800 SEK' }
       ]
-    },
-    {
-      id: 4,
-      category: 'Bokade',
-      count: 2,
-      headerColor: 'bg-green-200',
-      borderColor: 'border-green-300',
-      items: [
-        { name: 'Karin Smed', date: 'Omsak toelle till 2024-11-15', customer: 'Omsak toelle till känge!' },
-        { name: 'Sara Stort', date: 'Omsak toelle till känge!' },
-        { name: 'Iser Elofsson', date: 'Omsak toeke kankap!', amount: '6 800 SEK' },
-        { name: 'Per Jonsson', date: 'Omsak toeke kankap!', amount: '2 800 SEK' }
-      ]
     }
   ];
 
@@ -161,7 +148,7 @@ const Forfragningar: React.FC = () => {
       </div>
 
       {/* Inquiry Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {inquiries.map((column) => (
           <div key={column.id} className="space-y-3">
             <div className="flex items-center gap-2 mb-3">
