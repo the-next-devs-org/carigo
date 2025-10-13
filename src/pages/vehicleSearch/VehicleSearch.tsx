@@ -120,7 +120,7 @@ const VehicleSearch = () => {
               })();
 
               return (
-                <div key={i} className="relative min-w-[178px] rounded-xl bg-card p-3 shadow-sm bg-white">
+                <div key={i} className="relative w-full rounded-xl bg-card p-3 shadow-sm bg-white">
                   <div className="text-sm text-muted-foreground">{s.label}</div>
                   <div className="mt-1 text-2xl font-semibold text-foreground">{s.value}</div>
                   <div className="absolute bottom-3 right-3">{icon}</div>
