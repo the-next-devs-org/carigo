@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Eleanor Pena",
+    "email": "trany.nute@gmail.com",
+    "avatar": "https://randomuser.me/api/portraits/women/1.jpg",
+    "role": "User",
+    "type": "User",
+    "joined": "2013-08-24",
+    "status": "Active"
+  },
+  {
+    "id": 2,
+    "name": "Eleanor Pena",
+    "email": "trany.nute@gmail.com",
+    "avatar": "https://randomuser.me/api/portraits/women/1.jpg",
+    "role": "Admin",
+    "type": "Admin",
+    "joined": "2013-08-24",
+    "status": "Inactive"
+  },
+  {
+    "id": 3,
+    "name": "Jacob Morales",
+    "email": "jacob.mg@domain.com",
+    "avatar": "https://randomuser.me/api/portraits/men/2.jpg",
+    "role": "User",
+    "type": "User",
+    "joined": "2021-06-15",
+    "status": "Active"
+  },
+  {
+    "id": 4,
+    "name": "Sofia Chen",
+    "email": "sofia.chen@email.com",
+    "avatar": "https://randomuser.me/api/portraits/women/3.jpg",
+    "role": "User",
+    "type": "User",
+    "joined": "2020-10-05",
+    "status": "Active"
+  },
+  {
+    "id": 5,
+    "name": "Liam Johnson",
+    "email": "liam.j@website.org",
+    "avatar": "https://randomuser.me/api/portraits/men/4.jpg",
+    "role": "Admin",
+    "type": "Admin",
+    "joined": "2019-02-10",
+    "status": "Inactive"
+  },
+  {
+    "id": 6,
+    "name": "Olivia Smith",
+    "email": "olivia.smith@gmail.com",
+    "avatar": "https://randomuser.me/api/portraits/women/5.jpg",
+    "role": "User",
+    "type": "User",
+    "joined": "2022-03-22",
+    "status": "Active"
+  },
+  {
+    "id": 7,
+    "name": "Noah Martinez",
+    "email": "noah.martinez@business.net",
+    "avatar": "https://randomuser.me/api/portraits/men/6.jpg",
+    "role": "User",
+    "type": "User",
+    "joined": "2023-01-14",
+    "status": "Active"
+  },
+  {
+    "id": 8,
+    "name": "Isabella Wilson",
+    "email": "isabella.wilson@personal.org",
+    "avatar": "https://randomuser.me/api/portraits/women/7.jpg",
+    "role": "User",
+    "type": "User",
+    "joined": "2020-04-19",
+    "status": "Inactive"
+  }
+]

@@ -1,0 +1,514 @@
+@import "tailwindcss";
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .printable-area,
+  .printable-area * {
+    visibility: visible;
+  }
+  .printable-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    margin: 0;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+.font-inter {
+  font-family: "Inter", sans-serif;
+}
+
+.font-plus-jakarta {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.font-work-sans {
+  font-family: "Work Sans", sans-serif;
+}
+
+.header-main {
+  box-shadow: 0px 0px 39px 0px rgba(31, 123, 244, 0.15);
+}
+
+.dashboard-cards {
+  box-shadow: 0px 0px 30px 0px rgba(47, 45, 107, 0.1);
+}
+
+.sidebar-back {
+  /* background-image: url("./assets/sidebar-back.jpg"); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #FF6B00;
+}
+
+#checkbox2 {
+  display: none;
+}
+
+.toggle2 {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 3px;
+  transition-duration: 0.5s;
+}
+
+.bars {
+  width: 100%;
+  height: 6px;
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+#bar5 {
+  transition-duration: 0.8s;
+}
+
+#bar4,
+#bar6 {
+  width: 80%;
+}
+
+#checkbox2:checked + .toggle2 .bars {
+  position: absolute;
+  transition-duration: 0.5s;
+}
+
+#checkbox2:checked + .toggle2 #bar5 {
+  transform: scaleX(0);
+  transition-duration: 0.5s;
+}
+
+#checkbox2:checked + .toggle2 #bar4 {
+  width: 100%;
+  transform: rotate(45deg);
+  transition-duration: 0.5s;
+}
+
+#checkbox2:checked + .toggle2 #bar6 {
+  width: 100%;
+  transform: rotate(-45deg);
+  transition-duration: 0.5s;
+}
+
+#checkbox2:checked + .toggle2 {
+  transition-duration: 0.5s;
+  transform: rotate(180deg);
+}
+.fontbookingoview{
+  font-size: 12px;
+}
+.whowilldrive{
+  font-weight: bold;
+  font-size: 20px;
+}
+.fontwightlight{
+  font-weight: lighter;
+}
+.fontweightbold{
+  font-weight: 500;
+  font-size: 13px;
+  margin-bottom: 5px;
+  margin-top: 25px;
+}
+.hJgNWj {
+    text-transform: var(--typo-copy-large-transform, none);
+    letter-spacing: var(--typo-copy-large-letter-spacing, 0);
+    font: var(--typo-copy-large-font, 400 1rem / 1.5 Roboto, RobotoArial, sans-serif);
+    appearance: none;
+    background: none;
+    border: 0px;
+    border-radius: 0px;
+    outline: none;
+    box-sizing: border-box;
+    text-align: inherit;
+    width: 100%;
+    height: 3.125rem;
+    color: rgb(var(--color-primary-rgb));
+    caret-color: rgb(var(--color-brand-rgb));
+}
+.halfwidthsetinput {
+    width: 90%;
+}
+
+.react-tel-input .form-control {
+    position: relative;
+    font-size: 14px;
+    letter-spacing: .01rem;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-left: 48px;
+    margin-left: 65px!important;
+    background: #FFFFFF;
+    border: 1px solid #CACACA;
+    border-radius: 5px;
+    line-height: 25px;
+    height: 50px!important;
+    width: 140px!important;
+    outline: none;
+}
+
+.react-tel-input .flag-dropdown {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    border: 1px solid #cacaca;
+    border-radius: 3px 0 0 3px;
+    padding: 15px!important;
+}
+
+span.text-base.font-medium.text-gray-900.agecheckbox {
+    margin-left: 5px;
+}
+
+p.paymentmethodissue {
+    width: 650px;
+}
+
+.fontboldsupplementary{
+  font-weight: 600;
+  text-decoration: underline;
+  color: rgba(0, 0, 0, 0.511);
+}
+
+.infoicon{
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  color: rgba(0, 0, 0, 0.511);
+  margin-top: 3px;
+}
+
+.fightnumber {
+    display: flex;
+    background: #d3d3d34f;
+    padding: 15px;
+    border-radius: 12px;
+    width: 80%;
+    padding-left: 5px!important;
+}
+
+.infopara{
+  margin-left: 5px;
+}
+
+.navlinkbonus{
+  font-weight: 500;
+  text-decoration: underline;
+  font-size: 13px;
+}
+
+.importantinformationavoutpara {
+    font-size: 13px;
+    width: 700px;
+    margin-top: 10px;
+    color: grey;
+    list-style: circle;
+}
+
+.importantinformationavoutlist{
+  padding-left: 20px;
+}
+.totalamountwillpayetext{
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.pricetotallastfinal{
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.agenewcheckbox{
+  margin-top: 0px;
+  color: grey;
+  font-size: 12px;
+  width: 600px;
+}
+
+button.payandbookbutton {
+  color: white;
+  background-color: var(--color-orange-500);
+  padding: 12px;
+  width: 280px;
+  border-radius: 10px;
+  margin-top: 25px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.cardcardtitletext{
+  font-weight: 600;
+  text-align: center;
+  margin: auto;
+}
+
+.cardcardtitletextprice {
+    color: rgb(174, 10, 10);
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.cardcardtitletextpriceyellow {
+    color: #c9c95a;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.cardcardtitletextpriceblue{
+  color: rgb(0, 136, 255);
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.inputsearch{
+  margin-left: 35px
+}
+
+.bgbackgroundsearch{
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.paddingsettalist{
+  padding: 11px;
+  color: #938e8e;
+}
+
+.filterbutton{
+  background-color: white;
+  color: #938e8e;
+}
+
+.navtablist{
+  background-color: white;
+}
+.text-blue-700 {
+    color: #38a4fa;
+}
+.text-blue-600{
+   color: #38a4fa;
+}
+.skapabutton{
+  background-color: #38a4fa;
+  color: white;
+}
+.pricenumber{
+  font-size: 25px;
+}
+
+.fontgreycolorset{
+  color: #938e8e;
+}
+
+.recieptgorb{
+  color: #38a4fa;
+  font-weight: 600;
+}
+
+.badgedanger{
+  background-color: #ff4d4f;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.badgesuccess{
+  background-color: #36d0a6;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.badgeinfo{
+  background-color: #38a4fa;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.menuiconmenu {
+  width: 30px;
+  height: 30px;
+  margin-left: 3px;
+}
+
+.textsuccessset{
+  color: #36d0a6 !important;
+}
+
+.hactionbutton{
+  padding-left:10px;
+  padding-right:10px;
+  padding-bottom:5px;
+  padding-top:5px;
+}
+
+.bottomsetmodaldeatil{
+  bottom: 120px;
+}
+
+.activeborder {
+  border-bottom: 2px solid #38a4fa;
+  color: #38a4fa;
+}
+
+.bgsuccessset{
+  background-color: #36d0a6;
+  color: white;
+}
+
+.fontsizeset{
+  font-size: 10px;
+  padding: 6px;
+}
+
+.whitebgbackground{
+  background-color: white;
+}
+
+.exportera{
+  margin-top: 30px;
+  color: #38a4fa;
+}
+.chassinummersearch {
+  border: 0px;
+  background: white;
+  border-radius: 5px;
+  width: 380px;
+}
+
+.chassinummerauv{
+  background-color: white;
+  height: 35px;
+  font-size: 13px;
+  color: grey;
+}
+
+.textgrayset{
+  color: grey;
+}
+
+.mavchassinummersearch{
+  width: 90%;
+  margin-left: 20px;
+}
+
+.indikator {
+  margin-right: 10px;
+  border: 2px solid grey;
+}
+
+.bluwwinder{
+  height: 20px;
+}
+
+.cardcardimage{
+  object-fit: contain;
+  height: 180px;
+  width: 100%;
+  margin-left: 20px;
+}
+.fontsizeovermaintabs{
+  font-size: 13px;
+}
+
+.grundata{
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.aktiva{
+  border: 1px solid #38a4fa;
+  border-radius: 6px;
+  border-top: 3px solid #38a4fa;
+}
+
+.aktivaotherbuttons{
+  border: 1px solid lightgray;
+  border-radius: 6px;
+}
+
+section.w-full.rounded-xl.border.border-border\/60.bg-background\/80.shadow-sm.backdrop-blur.supports-\[backdrop-filter\]\:bg-background\/60{
+  border-color: #ccd1d3!important;
+  border-radius: 5px!important;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.border-\[var\(--border\)\] {
+    border-color: lightgray;
+}
+
+button.py-2.text-\[var\(--muted-fg\)\].border-b-2.hover\:text-\[var\(--fg-strong\)\].pl-3.pr-3 {
+    border-color: #6ca8e7;
+}
+
+button.py-2.text-\[var\(--primary\)\].border-l.border-\[var\(--primary\)\].pl-3.pr-3 {
+    border-color: lightgray;
+}
+
+button.py-2.text-\[var\(--muted-fg\)\].border-l.hover\:text-\[var\(--fg-strong\)\].pl-3.pr-3 {
+    border-color: lightgray;
+}
+
+span.inline-flex.items-center.gap-2.rounded-md.bg-\[var\(--success-soft\)\].text-\[var\(--success-fg\)\].px-2.py-1 {
+    background-color: #7cd37c;
+    color: white;
+    font-weight: bold;
+}
+
+.fc-h-event .fc-event-title-container{
+  cursor: pointer;
+}
+
+.btnghost{
+  background-color: #7cd37c;
+  padding: 10px;
+  font-size: 12px;
+  border-radius: 6px;
+  width: 100%;
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.closesbuttontang{
+  cursor: pointer;
+}
+
+/* calender css booking page */
+.fc .fc-button-primary{
+  background-color: #eef4f7!important;
+  border-color: #ccd1d3!important;
+  color: #0c0b0b!important;
+  padding: 7px;
+  margin-right: 5px;
+}
+/* end calender css booking page  */
+
+
+@media screen and (max-width: 700px) {
+  .menuiconmenu{
+    display: none!important;
+  }
+}

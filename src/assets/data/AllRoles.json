@@ -1,0 +1,128 @@
+[
+  {
+    "id": 1,
+    "name": "Roles 01",
+    "description": "This is role number 1 description",
+    "permissions": [
+      {
+        "resource": "Dashboard",
+        "view": false,
+        "add": true,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "resource": "Swish",
+        "view": false,
+        "add": false,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "resource": "User Management",
+        "view": true,
+        "add": true,
+        "edit": true,
+        "delete": true
+      },
+      {
+        "resource": "Vehicles",
+        "view": false,
+        "add": true,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "resource": "Agreements",
+        "view": false,
+        "add": true,
+        "edit": false,
+        "delete": true
+      },
+      {
+        "resource": "Customers",
+        "view": true,
+        "add": false,
+        "edit": false,
+        "delete": true
+      },
+      {
+        "resource": "Roles Management",
+        "view": false,
+        "add": false,
+        "edit": true,
+        "delete": false
+      },
+      {
+        "resource": "Invoices",
+        "view": false,
+        "add": true,
+        "edit": false,
+        "delete": false
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Roles 02",
+    "description": "This is role number 2 description",
+    "permissions": [
+      {
+        "resource": "Dashboard",
+        "view": true,
+        "add": false,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "resource": "Swish",
+        "view": true,
+        "add": false,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "resource": "User Management",
+        "view": false,
+        "add": false,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "resource": "Vehicles",
+        "view": true,
+        "add": false,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "resource": "Agreements",
+        "view": true,
+        "add": false,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "resource": "Customers",
+        "view": false,
+        "add": false,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "resource": "Roles Management",
+        "view": false,
+        "add": false,
+        "edit": false,
+        "delete": false
+      },
+      {
+        "resource": "Invoices",
+        "view": false,
+        "add": false,
+        "edit": false,
+        "delete": false
+      }
+    ]
+  }
+]

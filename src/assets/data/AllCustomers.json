@@ -1,0 +1,59 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "Eleanor Pena",
+      "email": "elina.benton@example.com",
+      "address": "4517 Washington Ave, Manchester",
+      "telephone": "(217) 555-0113",
+      "latestPurchase": "May 6, 2012",
+      "agreement": "Client",
+      "avatar": "/avatars/avatar1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Wade Warren",
+      "email": "jessica.hanson@example.com",
+      "address": "2972 Westheimer Rd, Santa Ana",
+      "telephone": "(217) 555-0113",
+      "latestPurchase": "May 6, 2012",
+      "agreement": "Owner",
+      "avatar": "/avatars/avatar2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Albert Flores",
+      "email": "jessica.cooper@example.com",
+      "address": "3891 Ranchview Dr, Richardson",
+      "telephone": "(217) 555-0113",
+      "latestPurchase": "May 6, 2012",
+      "agreement": "Agency",
+      "avatar": "/avatars/avatar3.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Cameron Williamson",
+      "email": "craig.hill@example.com",
+      "address": "8502 Preston Rd, Inglewood",
+      "telephone": "(217) 555-0113",
+      "latestPurchase": "May 6, 2012",
+      "agreement": "Owner",
+      "avatar": "/avatars/avatar4.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Bessie Cooper",
+      "email": "michelle.rivera@example.com",
+      "address": "3517 W. Gray St. Utica",
+      "telephone": "(217) 555-0113",
+      "latestPurchase": "May 6, 2012",
+      "agreement": "Agency",
+      "avatar": "/avatars/avatar5.jpg"
+    }
+  ],
+  "stats": {
+    "totalPurchasingCustomers": 2,
+    "totalSalesCustomers": 15,
+    "totalBrokerageClients": 3
+  }
+}

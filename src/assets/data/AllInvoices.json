@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1",
+    "invoiceNumber": "AB647B",
+    "customer": "Jacob Jones",
+    "amount": 21000,
+    "issueDate": "2013-08-02",
+    "dueDate": "2013-08-24",
+    "status": "Paid"
+  },
+  {
+    "id": "2",
+    "invoiceNumber": "AB647B",
+    "customer": "Marvin McKinney",
+    "amount": 42000,
+    "issueDate": "2016-04-28",
+    "dueDate": "2014-05-09",
+    "status": "Sold Out"
+  },
+  {
+    "id": "3",
+    "invoiceNumber": "AB647B",
+    "customer": "Robert Fox",
+    "amount": 57000,
+    "issueDate": "2016-04-28",
+    "dueDate": "2014-11-16",
+    "status": "Sold Out"
+  },
+  {
+    "id": "4",
+    "invoiceNumber": "AB647B",
+    "customer": "Eleanor Pena",
+    "amount": 12000,
+    "issueDate": "2013-08-02",
+    "dueDate": "2015-05-31",
+    "status": "Paid"
+  },
+  {
+    "id": "5",
+    "invoiceNumber": "AB647B",
+    "customer": "Bessie Cooper",
+    "amount": 16300,
+    "issueDate": "2013-08-02",
+    "dueDate": "2012-02-29",
+    "status": "Paid"
+  },
+  {
+    "id": "6",
+    "invoiceNumber": "AB647B",
+    "customer": "Jerome Bell",
+    "amount": 42000,
+    "issueDate": "2016-04-28",
+    "dueDate": "2013-08-02",
+    "status": "Sold Out"
+  },
+  {
+    "id": "7",
+    "invoiceNumber": "AB647B",
+    "customer": "Courtney Henry",
+    "amount": 26000,
+    "issueDate": "2016-04-28",
+    "dueDate": "2018-12-02",
+    "status": "Sold Out"
+  },
+  {
+    "id": "8",
+    "invoiceNumber": "AB647B",
+    "customer": "Cameron Williamson",
+    "amount": 62000,
+    "issueDate": "2013-08-02",
+    "dueDate": "2014-03-13",
+    "status": "Paid"
+  },
+  {
+    "id": "9",
+    "invoiceNumber": "AB647B",
+    "customer": "Darlene Robertson",
+    "amount": 65000,
+    "issueDate": "2016-04-28",
+    "dueDate": "2015-05-20",
+    "status": "Sold Out"
+  },
+  {
+    "id": "10",
+    "invoiceNumber": "AB647B",
+    "customer": "Ronald Richards",
+    "amount": 17000,
+    "issueDate": "2013-08-02",
+    "dueDate": "2018-02-28",
+    "status": "Paid"
+  }
+]

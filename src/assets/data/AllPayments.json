@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "totalPayment": {
+      "count": 10,
+      "label": "Payments"
+    },
+    "averagePayment": {
+      "amount": 12000,
+      "label": "kr Average"
+    },
+    "paymentStatus": {
+      "successful": 1,
+      "pending": 0,
+      "failed": 0
+    }
+  },
+  "payments": [
+    {
+      "id": "1",
+      "reference": "AB647B",
+      "name": "N/A",
+      "amount": 12000,
+      "date": "August 2, 2013",
+      "category": "N/A",
+      "status": "Available"
+    },
+    {
+      "id": "2",
+      "reference": "AB647B",
+      "name": "N/A",
+      "amount": 12000,
+      "date": "April 28, 2016",
+      "category": "N/A",
+      "status": "Sold Out"
+    },
+    {
+      "id": "3",
+      "reference": "AB647B",
+      "name": "N/A",
+      "amount": 12000,
+      "date": "April 28, 2016",
+      "category": "N/A",
+      "status": "Sold Out"
+    },
+    {
+      "id": "4",
+      "reference": "AB647B",
+      "name": "N/A",
+      "amount": 12000,
+      "date": "August 2, 2013",
+      "category": "N/A",
+      "status": "Available"
+    },
+    {
+      "id": "5",
+      "reference": "AB647B",
+      "name": "N/A",
+      "amount": 12000,
+      "date": "August 2, 2013",
+      "category": "N/A",
+      "status": "Available"
+    },
+    {
+      "id": "6",
+      "reference": "AB647B",
+      "name": "N/A",
+      "amount": 12000,
+      "date": "April 28, 2016",
+      "category": "N/A",
+      "status": "Sold Out"
+    },
+    {
+      "id": "7",
+      "reference": "AB647B",
+      "name": "N/A",
+      "amount": 12000,
+      "date": "April 28, 2016",
+      "category": "N/A",
+      "status": "Sold Out"
+    },
+    {
+      "id": "8",
+      "reference": "AB647B",
+      "name": "N/A",
+      "amount": 12000,
+      "date": "August 2, 2013",
+      "category": "N/A",
+      "status": "Available"
+    },
+    {
+      "id": "9",
+      "reference": "AB647B",
+      "name": "N/A",
+      "amount": 12000,
+      "date": "August 2, 2013",
+      "category": "N/A",
+      "status": "Available"
+    },
+    {
+      "id": "10",
+      "reference": "AB647B",
+      "name": "N/A",
+      "amount": 12000,
+      "date": "April 28, 2016",
+      "category": "N/A",
+      "status": "Sold Out"
+    }
+  ]
+}

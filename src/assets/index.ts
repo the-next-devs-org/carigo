@@ -1,0 +1,10 @@
+export { default as aboutImg } from "./about.png";
+export { default as feature1 } from "./feature-1.png";
+export { default as feature2 } from "./feature-2.png";
+export { default as feature3 } from "./feature-3.png";
+export { default as feature4 } from "./feature-4.png";
+export { default as feature5 } from "./feature-5.png";
+export { default as feature6 } from "./feature-6.png";
+export { default as pdfLogo } from "./pdf-logo.png";
+export { default as Vector } from "./Vector (3).png";
+export { default as signatureLogo } from "./signature-logo.png";

@@ -1,0 +1,445 @@
+{
+  "vehicles": [
+    {
+      "regNumber": "AB647B",
+      "brand": "Lamborghini",
+      "model": "Tesla Model 3",
+      "type": "Hardtop",
+      "status": "Available",
+      "year": 2008,
+      "category": "Luxury",
+      "color": "Black",
+      "chassisNumber": "WBAJB0C51JB084264",
+      "daysInStock": 31,
+      "registrationDate": "2023-12-15",
+      "preRegistrationDate": "2023-11-30",
+      "registrationRenewed": "2024-01-15",
+      "statusDate": "2024-02-01",
+      "engineVolume": "2.0L",
+      "gearbox": "Automatic",
+      "maxSpeed": "250 km/h",
+      "serviceWeight": "1850 kg",
+      "totalWeight": "2200 kg",
+      "vehicleWeight": "1650 kg",
+      "passengers": 5,
+      "fuelType": "Electric",
+      "variant": "Performance",
+      "version": "2.0",
+      "typeCode": "LM-2023",
+      "ecoCertificate": "Euro 6",
+      "currentOwner": "John Smith",
+      "acquisitionDate": "2023-10-01",
+      "tradeOwners": "2",
+      "organizationOwner": "Tesla Motors",
+      "lastInspection": "2024-01-15",
+      "nextInspectionDue": "2024-07-15",
+      "inspectionMileage": "25000 km",
+      "inspectionStation": "Central Auto Inspection",
+      "importId": "IMP-2023-001",
+      "directImport": "Yes",
+      "notes": [
+        {
+          "id": 1,
+          "text": "Lorem ipsum dolor sit amet consectetur. Enim est facilisi nulla cursus facilisis id et sit rhdh.",
+          "date": "2024-02-01"
+        },
+        {
+          "id": 2,
+          "text": "Lorem ipsum dolor sit amet consectetur. Enim est facilisi nulla cursus facilisis id et sit.",
+          "date": "2024-02-02"
+        },
+        {
+          "id": 3,
+          "text": "Lorem ipsum dolor sit amet consectetur. Enim est facilisi nulla cursus facilisis id et sit.",
+          "date": "2024-02-03"
+        }
+      ],
+      "documents": [
+        {
+          "id": 1,
+          "name": "Vehicle-info.pdf",
+          "type": "Vehicle"
+        },
+        {
+          "id": 2,
+          "name": "Vehicle-info.pdf",
+          "type": "Vehicle"
+        },
+        {
+          "id": 3,
+          "name": "Vehicle-info.pdf",
+          "type": "Vehicle"
+        }
+      ]
+    },
+    {
+      "regNumber": "AB657B",
+      "brand": "Toyota",
+      "model": "Honda Civic",
+      "type": "Muscle car",
+      "status": "Available",
+      "year": 2020,
+      "category": "Sedan",
+      "color": "Silver",
+      "chassisNumber": "1HGCM82633A123456",
+      "daysInStock": 45,
+      "registrationDate": "2023-11-15",
+      "preRegistrationDate": "2023-10-30",
+      "registrationRenewed": "2024-01-10",
+      "statusDate": "2024-01-15",
+      "engineVolume": "1.8L",
+      "gearbox": "Manual",
+      "maxSpeed": "200 km/h",
+      "serviceWeight": "1450 kg",
+      "totalWeight": "1800 kg",
+      "vehicleWeight": "1250 kg",
+      "passengers": 5,
+      "fuelType": "Petrol",
+      "variant": "Sport",
+      "version": "1.8",
+      "typeCode": "HC-2020",
+      "ecoCertificate": "Euro 5",
+      "currentOwner": "Jane Doe",
+      "acquisitionDate": "2023-09-15",
+      "tradeOwners": "1",
+      "organizationOwner": "Honda Motors",
+      "lastInspection": "2024-01-05",
+      "nextInspectionDue": "2024-07-05",
+      "inspectionMileage": "15000 km",
+      "inspectionStation": "East Auto Inspection",
+      "importId": "IMP-2023-002",
+      "directImport": "No",
+      "notes": [
+        {
+          "id": 1,
+          "text": "Regular maintenance completed.",
+          "date": "2024-01-05"
+        }
+      ],
+      "documents": [
+        {
+          "id": 1,
+          "name": "Vehicle-info.pdf",
+          "type": "Vehicle"
+        }
+      ]
+    },
+    {
+      "regNumber": "AB667B",
+      "brand": "Volkswagen",
+      "model": "Volvo XC90",
+      "type": "Convertible",
+      "status": "Sold Out",
+      "year": 2018,
+      "category": "SUV",
+      "color": "White",
+      "chassisNumber": "YV4952CZ2J1123456",
+      "daysInStock": 60,
+      "registrationDate": "2023-10-01",
+      "preRegistrationDate": "2023-09-15",
+      "registrationRenewed": "2024-01-01",
+      "statusDate": "2024-01-10",
+      "engineVolume": "2.0L",
+      "gearbox": "Automatic",
+      "maxSpeed": "220 km/h",
+      "serviceWeight": "2100 kg",
+      "totalWeight": "2700 kg",
+      "vehicleWeight": "1900 kg",
+      "passengers": 7,
+      "fuelType": "Diesel",
+      "variant": "Inscription",
+      "version": "T8",
+      "typeCode": "XC-2018",
+      "ecoCertificate": "Euro 6",
+      "currentOwner": "Michael Brown",
+      "acquisitionDate": "2023-08-15",
+      "tradeOwners": "3",
+      "organizationOwner": "Volvo Cars",
+      "lastInspection": "2023-12-20",
+      "nextInspectionDue": "2024-06-20",
+      "inspectionMileage": "35000 km",
+      "inspectionStation": "West Auto Inspection",
+      "importId": "IMP-2023-003",
+      "directImport": "Yes",
+      "notes": [
+        {
+          "id": 1,
+          "text": "Premium package installed.",
+          "date": "2023-12-20"
+        }
+      ],
+      "documents": [
+        {
+          "id": 1,
+          "name": "Vehicle-info.pdf",
+          "type": "Vehicle"
+        }
+      ]
+    },
+    {
+      "regNumber": "AB677B",
+      "brand": "Kia",
+      "model": "Kia Sportage",
+      "type": "Pickup Truck",
+      "status": "Available",
+      "year": 1998,
+      "category": "SUV",
+      "color": "Red",
+      "chassisNumber": "KNDPM3AC8N7123456",
+      "daysInStock": 15,
+      "registrationDate": "2024-01-15",
+      "preRegistrationDate": "2024-01-01",
+      "registrationRenewed": "2024-02-01",
+      "statusDate": "2024-02-05",
+      "engineVolume": "2.4L",
+      "gearbox": "Automatic",
+      "maxSpeed": "180 km/h",
+      "serviceWeight": "1750 kg",
+      "totalWeight": "2200 kg",
+      "vehicleWeight": "1550 kg",
+      "passengers": 5,
+      "fuelType": "Petrol",
+      "variant": "GT-Line",
+      "version": "2.4",
+      "typeCode": "KS-1998",
+      "ecoCertificate": "Euro 2",
+      "currentOwner": "Sarah Wilson",
+      "acquisitionDate": "2023-12-15",
+      "tradeOwners": "4",
+      "organizationOwner": "Kia Motors",
+      "lastInspection": "2024-01-20",
+      "nextInspectionDue": "2024-07-20",
+      "inspectionMileage": "150000 km",
+      "inspectionStation": "North Auto Inspection",
+      "importId": "IMP-2023-004",
+      "directImport": "No",
+      "notes": [
+        {
+          "id": 1,
+          "text": "Classic model in good condition.",
+          "date": "2024-01-20"
+        }
+      ],
+      "documents": [
+        {
+          "id": 1,
+          "name": "Vehicle-info.pdf",
+          "type": "Vehicle"
+        }
+      ]
+    },
+    {
+      "regNumber": "AB687B",
+      "brand": "Chevrolet",
+      "model": "GMC Sierra",
+      "type": "Hot hatch",
+      "status": "Sold Out",
+      "year": 2003,
+      "category": "Truck",
+      "color": "Blue",
+      "chassisNumber": "3GCUKREC5EG123456",
+      "daysInStock": 90,
+      "registrationDate": "2023-09-01",
+      "preRegistrationDate": "2023-08-15",
+      "registrationRenewed": "2024-01-01",
+      "statusDate": "2024-01-05",
+      "engineVolume": "5.3L",
+      "gearbox": "Automatic",
+      "maxSpeed": "170 km/h",
+      "serviceWeight": "2500 kg",
+      "totalWeight": "3500 kg",
+      "vehicleWeight": "2300 kg",
+      "passengers": 6,
+      "fuelType": "Petrol",
+      "variant": "Denali",
+      "version": "1500",
+      "typeCode": "GS-2003",
+      "ecoCertificate": "Euro 3",
+      "currentOwner": "Robert Taylor",
+      "acquisitionDate": "2023-07-15",
+      "tradeOwners": "2",
+      "organizationOwner": "GMC",
+      "lastInspection": "2023-12-01",
+      "nextInspectionDue": "2024-06-01",
+      "inspectionMileage": "200000 km",
+      "inspectionStation": "South Auto Inspection",
+      "importId": "IMP-2023-005",
+      "directImport": "Yes",
+      "notes": [
+        {
+          "id": 1,
+          "text": "Heavy duty truck with full service history.",
+          "date": "2023-12-01"
+        }
+      ],
+      "documents": [
+        {
+          "id": 1,
+          "name": "Vehicle-info.pdf",
+          "type": "Vehicle"
+        }
+      ]
+    },
+    {
+      "regNumber": "AB697B",
+      "brand": "Ford",
+      "model": "Chevrolet Silverado",
+      "type": "Light truck",
+      "status": "Sold Out",
+      "year": 2019,
+      "category": "Truck",
+      "color": "Gray",
+      "chassisNumber": "1GCUKREC9EF123456",
+      "daysInStock": 75,
+      "registrationDate": "2023-09-15",
+      "preRegistrationDate": "2023-09-01",
+      "registrationRenewed": "2024-01-05",
+      "statusDate": "2024-01-10",
+      "engineVolume": "6.2L",
+      "gearbox": "Automatic",
+      "maxSpeed": "180 km/h",
+      "serviceWeight": "2600 kg",
+      "totalWeight": "3600 kg",
+      "vehicleWeight": "2400 kg",
+      "passengers": 6,
+      "fuelType": "Petrol",
+      "variant": "High Country",
+      "version": "1500",
+      "typeCode": "CS-2019",
+      "ecoCertificate": "Euro 6",
+      "currentOwner": "William Johnson",
+      "acquisitionDate": "2023-08-01",
+      "tradeOwners": "1",
+      "organizationOwner": "Chevrolet",
+      "lastInspection": "2023-12-15",
+      "nextInspectionDue": "2024-06-15",
+      "inspectionMileage": "45000 km",
+      "inspectionStation": "Central Auto Inspection",
+      "importId": "IMP-2023-006",
+      "directImport": "No",
+      "notes": [
+        {
+          "id": 1,
+          "text": "Luxury trim package included.",
+          "date": "2023-12-15"
+        }
+      ],
+      "documents": [
+        {
+          "id": 1,
+          "name": "Vehicle-info.pdf",
+          "type": "Vehicle"
+        }
+      ]
+    },
+    {
+      "regNumber": "AB707B",
+      "brand": "Volvo",
+      "model": "Audi A4",
+      "type": "Electric vehicle",
+      "status": "Available",
+      "year": 2019,
+      "category": "Sedan",
+      "color": "Black",
+      "chassisNumber": "WAUZZZF49KA123456",
+      "daysInStock": 30,
+      "registrationDate": "2023-12-01",
+      "preRegistrationDate": "2023-11-15",
+      "registrationRenewed": "2024-01-10",
+      "statusDate": "2024-01-15",
+      "engineVolume": "2.0L",
+      "gearbox": "Automatic",
+      "maxSpeed": "240 km/h",
+      "serviceWeight": "1700 kg",
+      "totalWeight": "2100 kg",
+      "vehicleWeight": "1500 kg",
+      "passengers": 5,
+      "fuelType": "Petrol",
+      "variant": "S-Line",
+      "version": "45 TFSI",
+      "typeCode": "AA-2019",
+      "ecoCertificate": "Euro 6",
+      "currentOwner": "Emma Davis",
+      "acquisitionDate": "2023-11-01",
+      "tradeOwners": "2",
+      "organizationOwner": "Audi AG",
+      "lastInspection": "2024-01-01",
+      "nextInspectionDue": "2024-07-01",
+      "inspectionMileage": "55000 km",
+      "inspectionStation": "East Auto Inspection",
+      "importId": "IMP-2023-007",
+      "directImport": "Yes",
+      "notes": [
+        {
+          "id": 1,
+          "text": "Sport package and premium sound system.",
+          "date": "2024-01-01"
+        }
+      ],
+      "documents": [
+        {
+          "id": 1,
+          "name": "Vehicle-info.pdf",
+          "type": "Vehicle"
+        }
+      ]
+    },
+    {
+      "regNumber": "AB717B",
+      "brand": "Lexus",
+      "model": "BMW 3 Series",
+      "type": "Full-size car",
+      "status": "Sold Out",
+      "year": 2006,
+      "category": "Sedan",
+      "color": "Silver",
+      "chassisNumber": "WBA3B9C51EF123456",
+      "daysInStock": 120,
+      "registrationDate": "2023-08-01",
+      "preRegistrationDate": "2023-07-15",
+      "registrationRenewed": "2024-01-01",
+      "statusDate": "2024-01-05",
+      "engineVolume": "3.0L",
+      "gearbox": "Automatic",
+      "maxSpeed": "250 km/h",
+      "serviceWeight": "1600 kg",
+      "totalWeight": "2000 kg",
+      "vehicleWeight": "1400 kg",
+      "passengers": 5,
+      "fuelType": "Petrol",
+      "variant": "M Sport",
+      "version": "330i",
+      "typeCode": "BM-2006",
+      "ecoCertificate": "Euro 4",
+      "currentOwner": "David Miller",
+      "acquisitionDate": "2023-06-15",
+      "tradeOwners": "3",
+      "organizationOwner": "BMW AG",
+      "lastInspection": "2023-11-15",
+      "nextInspectionDue": "2024-05-15",
+      "inspectionMileage": "180000 km",
+      "inspectionStation": "West Auto Inspection",
+      "importId": "IMP-2023-008",
+      "directImport": "No",
+      "notes": [
+        {
+          "id": 1,
+          "text": "Classic BMW with full service history.",
+          "date": "2023-11-15"
+        }
+      ],
+      "documents": [
+        {
+          "id": 1,
+          "name": "Vehicle-info.pdf",
+          "type": "Vehicle"
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "totalVehicles": 15,
+    "vehiclesSold": 0,
+    "averageInventoryDays": 7
+  }
+}
