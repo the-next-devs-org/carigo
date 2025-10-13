@@ -48,6 +48,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: #FF6B00;
+  background: linear-gradient(180deg, #3B82F6 0%, #8B5CF6 100%);
 }
 
 #checkbox2 {
@@ -409,8 +410,8 @@ button.payandbookbutton {
 }
 
 .mavchassinummersearch{
-  width: 90%;
   margin-left: 20px;
+  margin-right: 20px;
 }
 
 .indikator {

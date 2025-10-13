@@ -48,7 +48,7 @@ export const privateRoutes = [
   ...(role === "Admin"
     ? [{ path: "/dashboard", component: Dashboard }]
     : [{ path: "/admin-dashboard", component: SuperAdminDashboard }]), // Fallback route
-  { path: "/customers", component: Customers },
+  { path: "/kundregister", component: Customers },
   ...(role === "Admin"
     ? [{ path: "/vehicles", component: Vehicles }]
     : [{ path: "/vehicle-company", component: SuperAdminVehicle }]),
@@ -57,7 +57,7 @@ export const privateRoutes = [
   { path: "/returned-cars", component: ReturnedCars },
   { path: "/agreements", component: Agreements },
   { path: "/sign-agreement/:agreementID", component: AgreementSign },
-  { path: "/swish", component: Payments },
+  { path: "/service-dokument", component: Payments },
   { path: "/invoices", component: Invoices },
   { path: "/users-management", component: UserManagement },
   { path: "/roles-management", component: RoleManagement },
@@ -72,6 +72,6 @@ export const privateRoutes = [
   { path: "/add-new-receipt", component: AddReceipt },
   { path: "/add-new-advertise/:registrationNumber", component: AddAdvertise },
   { path: "/forfragningar", component: forfragningar },
-  { path: "/avtal-betalning", component: Avtalbetalning },
+  { path: "/avtal-betalning", component: Agreements },
   { path: "/bokningar", component: Bokningar },
 ];

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X, RefreshCw, Menu } from "lucide-react"
+import AddNewVehicle from "../../components/models/AddNewVehicle";
 
 type CarType = {
   id: string;
@@ -13,7 +14,7 @@ type CarType = {
 const VehicleSearch = () => {
 
   const [modalOpen_xyz, setModalOpen_xyz] = useState(false);
-  const [currentCar_xyz, setCurrentCar_xyz] = useState(null);
+  const [currentCar_xyz, setCurrentCar_xyz] = useState<CarType | null>(null);
 
   const [activeMainTab, setActiveMainTab] = useState("oversikt")
   const [activeSubTab, setActiveSubTab] = useState("oversikt-pris")
@@ -56,6 +57,17 @@ const VehicleSearch = () => {
   const closeModal_xyz = () => {
     setCurrentCar_xyz(null);
     setModalOpen_xyz(false);
+  };
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
+
+  const handleSuccess = () => {
+    setIsModalOpen(false);
+    // Optionally refresh vehicle list here
+    console.log("Vehicle added or updated successfully!");
   };
 
   return (
@@ -108,7 +120,7 @@ const VehicleSearch = () => {
               })();
 
               return (
-                <div key={i} className="relative min-w-[130px] rounded-xl bg-card p-3 shadow-sm bg-white">
+                <div key={i} className="relative min-w-[230px] rounded-xl bg-card p-3 shadow-sm bg-white">
                   <div className="text-sm text-muted-foreground">{s.label}</div>
                   <div className="mt-1 text-2xl font-semibold text-foreground">{s.value}</div>
                   <div className="absolute bottom-3 right-3">{icon}</div>
@@ -117,18 +129,16 @@ const VehicleSearch = () => {
             })}
           </div>
 
-          <a href="#" className="exportera hidden shrink-0 text-sm font-medium text-[color:var(--color-chart-2)] hover:underline md:block">
-            Exportera till Kalkylark
-          </a>
+          
         </div>
       </section>
 
       <div
         role="toolbar"
         aria-label="Fordonsregister filter"
-        className="mavchassinummersearch max-w-[980px] rounded-xl bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/75"
+        className="mavchassinummersearch rounded-xl bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/75"
       >
-        <div className="flex items-center gap-2 shadow-sm">
+        <div className="flex items-center gap-2 justify-between">
           <div className="relative">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground">
               <path
@@ -147,107 +157,55 @@ const VehicleSearch = () => {
             />
           </div>
 
-          <span className="ml-1 text-xs text-muted-foreground textgrayset">Status:</span>
-          <span className="inline-flex items-center px-2.5 py-1 text-xs text-foreground shadow-sm chassinummerauv">[AUV]</span>
-          <span className="inline-flex items-center px-2.5 py-1 text-xs text-foreground textgrayset">Drivmedel</span>
-          <span className="inline-flex items-center border-input bg-card px-2.5 py-1 text-xs text-foreground shadow-sm chassinummerauv">[Alla]</span>
-          <span className="inline-flex items-center rounded-md border border-transparent px-2.5 py-1 text-xs text-foreground">Alla</span>
-          <span className="inline-flex items-center border-transparent px-2.5 py-1 text-xs text-foreground chassinummerauv">Listvy</span>
+          <div className="flex flex-wrap items-center gap-2">
+            
 
-          <div className="ml-auto flex items-center gap-2">
-            <button
-              type="button"
-              aria-label="Rutnätsvy aktiv"
-              className="bluwwinder inline-grid h-7 w-7 place-items-center bg-chart-2 text-primary-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-            >
-              <svg
-                width='15'
-                height='15'
-                viewBox="0 0 512 512"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlSpace="preserve"
-                fill='#38a4fa'
-              >
-                <g id="SVGRepo_bgCarrier" strokeWidth="0" />
-                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
-                <g id="SVGRepo_iconCarrier">
-                  <g>
-                    <g>
-                      <rect x="68.267" y="0" width="170.667" height="238.933" />
-                    </g>
-                  </g>
-
-                  <g>
-                    <g>
-                      <rect x="68.267" y="273.067" width="170.667" height="238.933" />
-                    </g>
-                  </g>
-
-                  <g>
-                    <g>
-                      <rect x="273.067" y="0" width="170.667" height="238.933" />
-                    </g>
-                  </g>
-
-                  <g>
-                    <g>
-                      <rect x="273.067" y="273.067" width="170.667" height="238.933" />
-                    </g>
-                  </g>
-                </g>
-              </svg>
+            <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
+              Drivmedel
             </button>
 
-            <button
-              type="button"
-              aria-label="Alternativ vy"
-              className="inline-grid h-7 w-7 place-items-center bg-muted text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
-            >
-              <svg
-                width='15'
-                height='15'
-                viewBox="0 0 512 512"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlSpace="preserve"
-                fill='#b1b2bcff'
-              >
-                <g id="SVGRepo_bgCarrier" strokeWidth="0" />
-                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
-                <g id="SVGRepo_iconCarrier">
-                  <g>
-                    <g>
-                      <rect x="68.267" y="0" width="170.667" height="238.933" />
-                    </g>
-                  </g>
-
-                  <g>
-                    <g>
-                      <rect x="68.267" y="273.067" width="170.667" height="238.933" />
-                    </g>
-                  </g>
-
-                  <g>
-                    <g>
-                      <rect x="273.067" y="0" width="170.667" height="238.933" />
-                    </g>
-                  </g>
-
-                  <g>
-                    <g>
-                      <rect x="273.067" y="273.067" width="170.667" height="238.933" />
-                    </g>
-                  </g>
-                </g>
-              </svg>
+            <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
+              Biltyp
             </button>
 
-            <div aria-label="Indikator" className="indikator h-6 w-6 rounded-full border border-input bg-card shadow-sm" />
+            <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
+              Pris
+            </button>
+
+            <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
+              Modellår
+            </button>
+
+            <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
+              Miltal
+            </button>
+
+            <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
+              Växellåda
+            </button>
+
+            <button className="rounded-full border border-gray-300 bg-white px-3 py-1.5 text-sm text-gray-800 hover:bg-gray-100 shadow-sm transition">
+              Säljare
+            </button>
           </div>
         </div>
       </div>
 
       <main className="mx-auto max-w-6xl px-5 py-8">
-        <h1 className="mb-6 text-xl font-semibold text-pretty">Pristruktur</h1>
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-xl font-semibold text-pretty">Pristruktur</h1>
+          <button 
+            onClick={handleOpenModal}
+            className="bg-blue-600 text-white px-[10px] py-[8px] rounded-[10px] hover:bg-blue-700 transition">
+            Lägg till fordon
+          </button>
+            <AddNewVehicle
+              open={isModalOpen}
+              onClose={handleCloseModal}
+              onSuccess={handleSuccess}
+            />
+        </div>
+
 
         <section aria-label="Fordonskort" className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
 
@@ -255,7 +213,7 @@ const VehicleSearch = () => {
             className="max-w-full mx-auto font-plus-jakarta cursor-pointer"
             onClick={openModal_xyz}
           >
-            <div className="bg-card text-card-foreground rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
+            <div className="bg-card bg-white text-card-foreground rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex min-w-0 flex-col gap-2">
                   <div>
@@ -417,7 +375,7 @@ const VehicleSearch = () => {
 
           {/* // dummy data */}
           <div className="max-w-full mx-auto font-plus-jakarta">
-            <div className="bg-card text-card-foreground rounded-2xl shadow-lg p-5">
+            <div className="bg-white bg-card text-card-foreground rounded-2xl shadow-lg p-5">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex min-w-0 flex-col gap-2">
                   <div>
@@ -458,7 +416,7 @@ const VehicleSearch = () => {
             </div>
           </div>
           <div className="max-w-full mx-auto font-plus-jakarta">
-            <div className="bg-card text-card-foreground rounded-2xl shadow-lg p-5">
+            <div className="bg-white bg-card text-card-foreground rounded-2xl shadow-lg p-5">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex min-w-0 flex-col gap-2">
                   <div>
@@ -499,7 +457,7 @@ const VehicleSearch = () => {
             </div>
           </div>
           <div className="max-w-full mx-auto font-plus-jakarta">
-            <div className="bg-card text-card-foreground rounded-2xl shadow-lg p-5">
+            <div className="bg-white bg-card text-card-foreground rounded-2xl shadow-lg p-5">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex min-w-0 flex-col gap-2">
                   <div>
@@ -540,7 +498,7 @@ const VehicleSearch = () => {
             </div>
           </div>
           <div className="max-w-full mx-auto font-plus-jakarta">
-            <div className="bg-card text-card-foreground rounded-2xl shadow-lg p-5">
+            <div className="bg-white bg-card text-card-foreground rounded-2xl shadow-lg p-5">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex min-w-0 flex-col gap-2">
                   <div>
@@ -581,7 +539,7 @@ const VehicleSearch = () => {
             </div>
           </div>
           <div className="max-w-full mx-auto font-plus-jakarta">
-            <div className="bg-card text-card-foreground rounded-2xl shadow-lg p-5">
+            <div className="bg-white bg-card text-card-foreground rounded-2xl shadow-lg p-5">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex min-w-0 flex-col gap-2">
                   <div>
@@ -622,7 +580,7 @@ const VehicleSearch = () => {
             </div>
           </div>
           <div className="max-w-full mx-auto font-plus-jakarta">
-            <div className="bg-card text-card-foreground rounded-2xl shadow-lg p-5">
+            <div className="bg-white bg-card text-card-foreground rounded-2xl shadow-lg p-5">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex min-w-0 flex-col gap-2">
                   <div>
