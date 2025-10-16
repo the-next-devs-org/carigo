@@ -99,14 +99,14 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
     >
       <div className="flex items-center justify-between px-4 pt-4 pb-4">
         {isOpen || isDesktop ? (
-          <span className="font-bold text-2xl text-white font-plus-jakarta">
+          <a href="/" className="font-bold text-2xl text-white font-plus-jakarta">
             Caringo
-          </span>
+          </a>
           
         ) : (
-          <span className="text-white font-bold text-lg hidden lg:block">
+          <a href="/" className="text-white font-bold text-lg hidden lg:block">
             DP
-          </span>
+          </a>
         )}
 
         <div className="flex lg:hidden items-center gap-3">

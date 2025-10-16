@@ -92,23 +92,14 @@ const Bokningar = () => {
 
                 if (result.success && Array.isArray(result.data)) {
                     const formattedEvents = result.data.map((booking: any) => {
-                        // const title = `${booking.firstname} ${booking.surname} - ${booking.vehicle?.name || ""
-                        //     }`;
-                        const title = `${booking.firstname || ""} ${booking.surname || ""}`;
-
-                        const start = booking.pickup_date.split("T")[0];
-
-                        const end = new Date(booking.return_date);
-                        end.setDate(end.getDate() + 1);   
-
-                        // console.log("start Date:", start); // Debugging line
-                        // console.log("end Date:", end); // Debugging line
+                        const title = `${booking.firstname} ${booking.surname} - ${booking.vehicle?.name || ""
+                            }`;
+                        const start = booking.createdAt.split("T")[0];
                         const color = booking.package_id === 2 ? "#16a34a" : "#f97316";
-                        // console.log("Booking Data:", booking); // Debugging line
+                        console.log("Booking Data:", booking); // Debugging line`
                         return {
                             title,
                             start,
-                            end,
                             color,
                             extendedProps: {
                                 firstname: booking.firstname,

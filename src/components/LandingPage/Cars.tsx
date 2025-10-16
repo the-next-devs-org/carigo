@@ -7,6 +7,9 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Select from "react-select";
 import countryList from "react-select-country-list";
+import { useUserProfile } from "../../utils/useUserProfile";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 interface Car {
   id: number;
@@ -40,6 +43,23 @@ interface Package {
 }
 
 const ShowCars: React.FC = () => {
+
+  const location = useLocation();
+  const {
+    pickupLocation,
+    returnLocation,
+    pickupDate,
+    pickupTime,
+    returnDate,
+    returnTime,
+  } = location.state || {};
+
+  // console.log("++++++++++++++++++++++++++++");
+  // console.log("Location state:", location.state);
+  // console.log("++++++++++++++++++++++++++++");
+
+  const { user } = useUserProfile();
+
   const [selectedCar, setSelectedCar] = useState<Car | null>(null);
   const [cars, setCars] = useState<Car[]>([]);
   const [loading, setLoading] = useState(true);
@@ -67,6 +87,8 @@ const ShowCars: React.FC = () => {
   const changeHandler = (val) => {
     setValue(val);
   };
+
+  const navigate = useNavigate();
 
   const fetchCars = async () => {
     setLoading(true);
@@ -123,9 +145,15 @@ const ShowCars: React.FC = () => {
   }, []);
 
   const handleCardClick = (car: Car) => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+      return;
+    }
     setSelectedCar((prev) => (prev?.id === car.id ? null : car));
     localStorage.setItem("selectedCarPrice", car.price_per_day.toString());
   };
+
 
   const handlePackageClick = (pkg: Package) => {
     setSelectedPackage(pkg);
@@ -226,7 +254,15 @@ const ShowCars: React.FC = () => {
       card_date: formData.get("card_date") as string || "",
       card_cvc: formData.get("card_cvc") as string || "",
       fightnumber: formData.get("fightnumber") as string || "",
+      pickup_location: pickupLocation,
+      return_location: returnLocation,
+      pickup_date: pickupDate,
+      pickup_time: pickupTime,
+      return_date: returnDate,
+      return_time: returnTime,
+
     };
+
 
     // console.log("🧾 Booking Payload:", payload);
 
@@ -234,11 +270,28 @@ const ShowCars: React.FC = () => {
       const response = await axios.post(`${BACKEND_API_ENDPOINT}bookings/create`, payload);
 
       if (response.data.success) {
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
+
+        const secondapipayload = {
+          user_id: localStorage.getItem("userId"),
+          vehicle_id: selectedCar.id,
+          booking_id: response.data.booking_id,
+          customer: user ? `${user.first_name}`.trim() : "",
+          name: user ? `${user.first_name} ${user.last_name}`.trim() : "",
+          status: "new",
+          category: "new",
+          amount: totalPrice,
+          date: formattedDate,
+        };
+
+        await axios.post(`${BACKEND_API_ENDPOINT}inquiries/create`, secondapipayload);
+
         toast.success("Booking successfully created!");
         // console.log("Booking ID:", response.data.booking_id);
         setTimeout(() => {
-          window.location.href = "/"; 
-        }, 2000);
+          window.location.href = "/";
+        }, 3000);
       } else {
         toast.error(response.data.message || "Failed to create booking.");
       }
@@ -822,6 +875,20 @@ const ShowCars: React.FC = () => {
                           <span>{item}</span>
                         </li>
                       ))}
+                      <li><span>Pickup Location:</span> {pickupLocation || "Not set"}</li>
+                      <li><span>Return Location:</span> {returnLocation || "Not set"}</li>
+                      <li>
+                        <span>Pickup Date:</span> {pickupDate ? new Date(pickupDate).toLocaleDateString('en-GB') : "Not set"}
+                      </li>
+                      <li>
+                        <span>Pickup Time:</span> {pickupTime ? new Date(`1970-01-01T${pickupTime}`).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : "Not set"}
+                      </li>
+                      <li>
+                        <span>Return Date:</span> {returnDate ? new Date(returnDate).toLocaleDateString('en-GB') : "Not set"}
+                      </li>
+                      <li>
+                        <span>Return Time:</span> {returnTime ? new Date(`1970-01-01T${returnTime}`).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }) : "Not set"}
+                      </li>
                     </ul>
                   </aside>
                 </div>

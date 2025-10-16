@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X, Car, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useUserProfile } from "../../utils/useUserProfile";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,6 +9,13 @@ const Header = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const { user, loading } = useUserProfile();
+  const token = localStorage.getItem("token");
+
+  const isLoggedIn = !!token && !!user;
+
+  if (loading) return null;
 
   return (
     <header className="bg-gradient-to-r from-black to-gray-800 text-white px-4 py-3 font-plus-jakarta relative">
@@ -49,19 +57,30 @@ const Header = () => {
             EN | kr
           </a>
           <div className="flex gap-2">
-            <Link
-              to="/login"
-              className="hover:text-orange-500 transition-colors duration-200"
-            >
-              Log in
-            </Link>
-            <span>|</span>
-            <Link
-              to="/signup"
-              className="hover:text-orange-500 transition-colors duration-200"
-            >
-              Register
-            </Link>
+            {isLoggedIn ? (
+              <Link
+                to="/dashboard"
+                className="hover:text-orange-500 transition-colors duration-200"
+              >
+                Dashboard
+              </Link>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="hover:text-orange-500 transition-colors duration-200"
+                >
+                  Log in
+                </Link>
+                <span>|</span>
+                <Link
+                  to="/signup"
+                  className="hover:text-orange-500 transition-colors duration-200"
+                >
+                  Register
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -90,19 +109,30 @@ const Header = () => {
             EN | kr
           </a>
           <div className="flex gap-2">
-            <Link
-              to="/login"
-              className="hover:text-orange-500 transition-colors duration-200"
-            >
-              Log in
-            </Link>
-            <span>|</span>
-            <Link
-              to="/signup"
-              className="hover:text-orange-500 transition-colors duration-200"
-            >
-              Register
-            </Link>
+            {isLoggedIn ? (
+              <Link
+                to="/dashboard"
+                className="hover:text-orange-500 transition-colors duration-200"
+              >
+                Dashboard
+              </Link>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="hover:text-orange-500 transition-colors duration-200"
+                >
+                  Log in
+                </Link>
+                <span>|</span>
+                <Link
+                  to="/signup"
+                  className="hover:text-orange-500 transition-colors duration-200"
+                >
+                  Register
+                </Link>
+              </>
+            )}
           </div>
         </nav>
       </div>

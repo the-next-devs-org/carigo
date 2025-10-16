@@ -4,10 +4,12 @@
   body * {
     visibility: hidden;
   }
+
   .printable-area,
   .printable-area * {
     visibility: visible;
   }
+
   .printable-area {
     position: absolute;
     left: 0;
@@ -17,6 +19,7 @@
     padding: 20px;
     margin: 0;
   }
+
   .no-print {
     display: none !important;
   }
@@ -84,111 +87,117 @@
   width: 80%;
 }
 
-#checkbox2:checked + .toggle2 .bars {
+#checkbox2:checked+.toggle2 .bars {
   position: absolute;
   transition-duration: 0.5s;
 }
 
-#checkbox2:checked + .toggle2 #bar5 {
+#checkbox2:checked+.toggle2 #bar5 {
   transform: scaleX(0);
   transition-duration: 0.5s;
 }
 
-#checkbox2:checked + .toggle2 #bar4 {
+#checkbox2:checked+.toggle2 #bar4 {
   width: 100%;
   transform: rotate(45deg);
   transition-duration: 0.5s;
 }
 
-#checkbox2:checked + .toggle2 #bar6 {
+#checkbox2:checked+.toggle2 #bar6 {
   width: 100%;
   transform: rotate(-45deg);
   transition-duration: 0.5s;
 }
 
-#checkbox2:checked + .toggle2 {
+#checkbox2:checked+.toggle2 {
   transition-duration: 0.5s;
   transform: rotate(180deg);
 }
-.fontbookingoview{
+
+.fontbookingoview {
   font-size: 12px;
 }
-.whowilldrive{
+
+.whowilldrive {
   font-weight: bold;
   font-size: 20px;
 }
-.fontwightlight{
+
+.fontwightlight {
   font-weight: lighter;
 }
-.fontweightbold{
+
+.fontweightbold {
   font-weight: 500;
   font-size: 13px;
   margin-bottom: 5px;
   margin-top: 25px;
 }
+
 .hJgNWj {
-    text-transform: var(--typo-copy-large-transform, none);
-    letter-spacing: var(--typo-copy-large-letter-spacing, 0);
-    font: var(--typo-copy-large-font, 400 1rem / 1.5 Roboto, RobotoArial, sans-serif);
-    appearance: none;
-    background: none;
-    border: 0px;
-    border-radius: 0px;
-    outline: none;
-    box-sizing: border-box;
-    text-align: inherit;
-    width: 100%;
-    height: 3.125rem;
-    color: rgb(var(--color-primary-rgb));
-    caret-color: rgb(var(--color-brand-rgb));
+  text-transform: var(--typo-copy-large-transform, none);
+  letter-spacing: var(--typo-copy-large-letter-spacing, 0);
+  font: var(--typo-copy-large-font, 400 1rem / 1.5 Roboto, RobotoArial, sans-serif);
+  appearance: none;
+  background: none;
+  border: 0px;
+  border-radius: 0px;
+  outline: none;
+  box-sizing: border-box;
+  text-align: inherit;
+  width: 100%;
+  height: 3.125rem;
+  color: rgb(var(--color-primary-rgb));
+  caret-color: rgb(var(--color-brand-rgb));
 }
+
 .halfwidthsetinput {
-    width: 90%;
+  width: 90%;
 }
 
 .react-tel-input .form-control {
-    position: relative;
-    font-size: 14px;
-    letter-spacing: .01rem;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    padding-left: 48px;
-    margin-left: 65px!important;
-    background: #FFFFFF;
-    border: 1px solid #CACACA;
-    border-radius: 5px;
-    line-height: 25px;
-    height: 50px!important;
-    width: 140px!important;
-    outline: none;
+  position: relative;
+  font-size: 14px;
+  letter-spacing: .01rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-left: 48px;
+  margin-left: 65px !important;
+  background: #FFFFFF;
+  border: 1px solid #CACACA;
+  border-radius: 5px;
+  line-height: 25px;
+  height: 50px !important;
+  width: 140px !important;
+  outline: none;
 }
 
 .react-tel-input .flag-dropdown {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-    border: 1px solid #cacaca;
-    border-radius: 3px 0 0 3px;
-    padding: 15px!important;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  border: 1px solid #cacaca;
+  border-radius: 3px 0 0 3px;
+  padding: 15px !important;
 }
 
 span.text-base.font-medium.text-gray-900.agecheckbox {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 
 p.paymentmethodissue {
-    width: 650px;
+  width: 650px;
 }
 
-.fontboldsupplementary{
+.fontboldsupplementary {
   font-weight: 600;
   text-decoration: underline;
   color: rgba(0, 0, 0, 0.511);
 }
 
-.infoicon{
+.infoicon {
   width: 20px;
   height: 20px;
   margin-left: 10px;
@@ -197,46 +206,47 @@ p.paymentmethodissue {
 }
 
 .fightnumber {
-    display: flex;
-    background: #d3d3d34f;
-    padding: 15px;
-    border-radius: 12px;
-    width: 80%;
-    padding-left: 5px!important;
+  display: flex;
+  background: #d3d3d34f;
+  padding: 15px;
+  border-radius: 12px;
+  width: 80%;
+  padding-left: 5px !important;
 }
 
-.infopara{
+.infopara {
   margin-left: 5px;
 }
 
-.navlinkbonus{
+.navlinkbonus {
   font-weight: 500;
   text-decoration: underline;
   font-size: 13px;
 }
 
 .importantinformationavoutpara {
-    font-size: 13px;
-    width: 700px;
-    margin-top: 10px;
-    color: grey;
-    list-style: circle;
+  font-size: 13px;
+  width: 700px;
+  margin-top: 10px;
+  color: grey;
+  list-style: circle;
 }
 
-.importantinformationavoutlist{
+.importantinformationavoutlist {
   padding-left: 20px;
 }
-.totalamountwillpayetext{
+
+.totalamountwillpayetext {
   font-weight: 700;
   font-size: 13px;
 }
 
-.pricetotallastfinal{
+.pricetotallastfinal {
   font-weight: 700;
   font-size: 20px;
 }
 
-.agenewcheckbox{
+.agenewcheckbox {
   margin-top: 0px;
   color: grey;
   font-size: 12px;
@@ -254,76 +264,80 @@ button.payandbookbutton {
   cursor: pointer;
 }
 
-.cardcardtitletext{
+.cardcardtitletext {
   font-weight: 600;
   text-align: center;
   margin: auto;
 }
 
 .cardcardtitletextprice {
-    color: rgb(174, 10, 10);
-    font-weight: 700;
-    font-size: 30px;
+  color: rgb(174, 10, 10);
+  font-weight: 700;
+  font-size: 30px;
 }
 
 .cardcardtitletextpriceyellow {
-    color: #c9c95a;
-    font-weight: 700;
-    font-size: 30px;
+  color: #c9c95a;
+  font-weight: 700;
+  font-size: 30px;
 }
 
-.cardcardtitletextpriceblue{
+.cardcardtitletextpriceblue {
   color: rgb(0, 136, 255);
   font-weight: 700;
   font-size: 30px;
 }
 
-.inputsearch{
+.inputsearch {
   margin-left: 35px
 }
 
-.bgbackgroundsearch{
+.bgbackgroundsearch {
   background-color: #fff;
   border-radius: 10px;
 }
 
-.paddingsettalist{
+.paddingsettalist {
   padding: 11px;
   color: #938e8e;
 }
 
-.filterbutton{
+.filterbutton {
   background-color: white;
   color: #938e8e;
 }
 
-.navtablist{
+.navtablist {
   background-color: white;
 }
+
 .text-blue-700 {
-    color: #38a4fa;
+  color: #38a4fa;
 }
-.text-blue-600{
-   color: #38a4fa;
+
+.text-blue-600 {
+  color: #38a4fa;
 }
-.skapabutton{
+
+.skapabutton {
   background-color: #38a4fa;
   color: white;
 }
-.pricenumber{
+
+.pricenumber {
   font-size: 25px;
 }
 
-.fontgreycolorset{
+.fontgreycolorset {
   color: #938e8e;
 }
 
-.recieptgorb{
+.recieptgorb {
   color: #38a4fa;
   font-weight: 600;
 }
 
-.badgedanger{
+.badgedanger {
   background-color: #ff4d4f;
   color: white;
   padding: 3px 10px;
@@ -331,7 +345,7 @@ button.payandbookbutton {
   font-size: 12px;
 }
 
-.badgesuccess{
+.badgesuccess {
   background-color: #36d0a6;
   color: white;
   padding: 3px 10px;
@@ -339,7 +353,7 @@ button.payandbookbutton {
   font-size: 12px;
 }
 
-.badgeinfo{
+.badgeinfo {
   background-color: #38a4fa;
   color: white;
   padding: 3px 10px;
@@ -353,18 +367,18 @@ button.payandbookbutton {
   margin-left: 3px;
 }
 
-.textsuccessset{
+.textsuccessset {
   color: #36d0a6 !important;
 }
 
-.hactionbutton{
-  padding-left:10px;
-  padding-right:10px;
-  padding-bottom:5px;
-  padding-top:5px;
+.hactionbutton {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 
-.bottomsetmodaldeatil{
+.bottomsetmodaldeatil {
   bottom: 120px;
 }
 
@@ -373,24 +387,25 @@ button.payandbookbutton {
   color: #38a4fa;
 }
 
-.bgsuccessset{
+.bgsuccessset {
   background-color: #36d0a6;
   color: white;
 }
 
-.fontsizeset{
+.fontsizeset {
   font-size: 10px;
   padding: 6px;
 }
 
-.whitebgbackground{
+.whitebgbackground {
   background-color: white;
 }
 
-.exportera{
+.exportera {
   margin-top: 30px;
   color: #38a4fa;
 }
+
 .chassinummersearch {
   border: 0px;
   background: white;
@@ -398,18 +413,18 @@ button.payandbookbutton {
   width: 380px;
 }
 
-.chassinummerauv{
+.chassinummerauv {
   background-color: white;
   height: 35px;
   font-size: 13px;
   color: grey;
 }
 
-.textgrayset{
+.textgrayset {
   color: grey;
 }
 
-.mavchassinummersearch{
+.mavchassinummersearch {
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -419,70 +434,71 @@ button.payandbookbutton {
   border: 2px solid grey;
 }
 
-.bluwwinder{
+.bluwwinder {
   height: 20px;
 }
 
-.cardcardimage{
+.cardcardimage {
   object-fit: contain;
   height: 150px;
   width: 100%;
   margin-left: 20px;
 }
-.fontsizeovermaintabs{
+
+.fontsizeovermaintabs {
   font-size: 13px;
 }
 
-.grundata{
+.grundata {
   font-size: 14px;
   margin-left: 20px;
 }
 
-.aktiva{
+.aktiva {
   border: 1px solid #38a4fa;
   border-radius: 6px;
   border-top: 3px solid #38a4fa;
 }
 
-.aktivaotherbuttons{
+.aktivaotherbuttons {
   border: 1px solid lightgray;
   border-radius: 6px;
 }
 
-section.w-full.rounded-xl.border.border-border\/60.bg-background\/80.shadow-sm.backdrop-blur.supports-\[backdrop-filter\]\:bg-background\/60{
-  border-color: #ccd1d3!important;
-  border-radius: 5px!important;
+section.w-full.rounded-xl.border.border-border\/60.bg-background\/80.shadow-sm.backdrop-blur.supports-\[backdrop-filter\]\:bg-background\/60 {
+  border-color: #ccd1d3 !important;
+  border-radius: 5px !important;
   margin-bottom: 10px;
   background-color: white;
 }
 
 .border-\[var\(--border\)\] {
-    border-color: lightgray;
+  border-color: lightgray;
 }
 
 button.py-2.text-\[var\(--muted-fg\)\].border-b-2.hover\:text-\[var\(--fg-strong\)\].pl-3.pr-3 {
-    border-color: #6ca8e7;
+  border-color: #6ca8e7;
 }
 
 button.py-2.text-\[var\(--primary\)\].border-l.border-\[var\(--primary\)\].pl-3.pr-3 {
-    border-color: lightgray;
+  border-color: lightgray;
 }
 
 button.py-2.text-\[var\(--muted-fg\)\].border-l.hover\:text-\[var\(--fg-strong\)\].pl-3.pr-3 {
-    border-color: lightgray;
+  border-color: lightgray;
 }
 
 span.inline-flex.items-center.gap-2.rounded-md.bg-\[var\(--success-soft\)\].text-\[var\(--success-fg\)\].px-2.py-1 {
-    background-color: #7cd37c;
-    color: white;
-    font-weight: bold;
+  background-color: #7cd37c;
+  color: white;
+  font-weight: bold;
 }
 
-.fc-h-event .fc-event-title-container{
+.fc-h-event .fc-event-title-container {
   cursor: pointer;
 }
 
-.btnghost{
+.btnghost {
   background-color: #7cd37c;
   padding: 10px;
   font-size: 12px;
@@ -493,21 +509,22 @@ span.inline-flex.items-center.gap-2.rounded-md.bg-\[var\(--success-soft\)\].text
   margin-top: 20px;
 }
 
-.closesbuttontang{
+.closesbuttontang {
   cursor: pointer;
 }
 
 /* calender css booking page */
-.fc .fc-button-primary{
-  background-color: #eef4f7!important;
-  border-color: #ccd1d3!important;
-  color: #0c0b0b!important;
+.fc .fc-button-primary {
+  background-color: #eef4f7 !important;
+  border-color: #ccd1d3 !important;
+  color: #0c0b0b !important;
   padding: 7px;
   margin-right: 5px;
 }
+
 /* end calender css booking page  */
 
-.viewdeatilscardwidthset{
+.viewdeatilscardwidthset {
   width: 460px;
 }
 
@@ -518,13 +535,58 @@ input.w-full.text-sm {
   cursor: pointer;
 }
 
-.bgbluebutton{
+.bgbluebutton {
   background: linear-gradient(180deg, #3B82F6 0%, #8B5CF6 100%);
   padding: 12px;
 }
 
+.bg-blue-500 {
+  background-color: #3b82f647;
+  color: black !important;
+  border: 2px solid #7384df;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 12px;
+}
+
+.bg-green-600 {
+  background-color: var(--color-green-100);
+  color: black !important;
+  border: 2px solid #76df73;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.bg-yellow-500 {
+  background-color: var(--color-yellow-100);
+  color: black !important;
+  border: 2px solid #dfc673;
+  font-size: 8px;
+  cursor: pointer;
+}
+.filterbuttonwidthsetting {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+input.w-full.border.border-gray-300.rounded-l-md.focus\:ring-2.focus\:ring-orange-500.focus\:border-transparent.text-sm.cursor-pointer{
+  padding-left:30px;
+}
+
+input.w-full.pl-8.pr-1.py-3.border.border-gray-300.border-l-0.rounded-r-md.focus\:ring-2.focus\:ring-orange-500.focus\:border-transparent.text-sm{
+  padding-left:30px;
+}
+
+input.paddingsetinput.w-full.pl-10.pr-4.py-3.border.border-gray-300.rounded-md.focus\:ring-2.focus\:ring-orange-500.focus\:border-transparent.text-sm{
+  padding-left:30px;
+}
+
+.fc-event-time {
+    display: none;
+}
+
 @media screen and (max-width: 700px) {
-  .menuiconmenu{
-    display: none!important;
+  .menuiconmenu {
+    display: none !important;
   }
 }

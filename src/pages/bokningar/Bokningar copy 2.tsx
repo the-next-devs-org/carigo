@@ -80,6 +80,7 @@ const Bokningar = () => {
     const [events, setEvents] = useState([]);
     const [selectedEvent, setSelectedEvent] = useState<any>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [bookings, setBookings] = useState<Booking[]>([]);
 
     const url = "bookings/getall";
     const fullUrl = `${BACKEND_API_ENDPOINT}${url}`;
@@ -91,43 +92,26 @@ const Bokningar = () => {
                 const result = await response.json();
 
                 if (result.success && Array.isArray(result.data)) {
-                    const formattedEvents = result.data.map((booking: any) => {
-                        // const title = `${booking.firstname} ${booking.surname} - ${booking.vehicle?.name || ""
-                        //     }`;
-                        const title = `${booking.firstname || ""} ${booking.surname || ""}`;
-
-                        const start = booking.pickup_date.split("T")[0];
-
-                        const end = new Date(booking.return_date);
-                        end.setDate(end.getDate() + 1);   
-
-                        // console.log("start Date:", start); // Debugging line
-                        // console.log("end Date:", end); // Debugging line
-                        const color = booking.package_id === 2 ? "#16a34a" : "#f97316";
-                        // console.log("Booking Data:", booking); // Debugging line
-                        return {
-                            title,
-                            start,
-                            end,
-                            color,
-                            extendedProps: {
-                                firstname: booking.firstname,
-                                surname: booking.surname,
-                                phone: booking.phone,
-                                email: booking.email,
-                                total_price: booking.total_price,
-                                vehicle: booking.vehicle?.name,
-                                package: booking.package?.name,
-                                vehicle_image:
-                                    booking.vehicle?.image_url ||
-                                    booking.vehicle?.image ||
-                                    null, 
-                            },
-                        };
-                    });
-
+                    setBookings(result.data); // store full booking data
+                    const formattedEvents = result.data.map((booking: any) => ({
+                        title: `${booking.firstname || ""} ${booking.surname || ""}`,
+                        start: booking.pickup_date.split("T")[0],
+                        end: (() => {
+                            const end = new Date(booking.return_date);
+                            end.setDate(end.getDate() + 1);
+                            return end;
+                        })(),
+                        color: booking.package_id === 2 ? "#16a34a" : "#f97316",
+                        extendedProps: {
+                            ...booking,
+                            vehicle: booking.vehicle?.name,
+                            package: booking.package?.name,
+                            vehicle_image: booking.vehicle?.image_url || booking.vehicle?.image || null,
+                        },
+                    }));
                     setEvents(formattedEvents);
                 }
+
             } catch (error) {
                 console.error("Error fetching bookings:", error);
             }
@@ -204,18 +188,59 @@ const Bokningar = () => {
                 </div>
             </section>
             <div className="p-4 bg-white rounded-2xl shadow-md">
-                <FullCalendar
-                    plugins={[dayGridPlugin, interactionPlugin]}
-                    initialView="dayGridMonth"
-                    headerToolbar={{
-                        left: "prev,next today",
-                        center: "title",
-                        right: "dayGridMonth,dayGridWeek,dayGridDay",
-                    }}
-                    events={events}
-                    eventClick={handleEventClick}
-                    height="auto"
-                />
+                <div className="p-4 bg-white rounded-2xl shadow-md">
+                    <div className="flex">
+                        <div className="w-30 border-r bg-gray-50 p-2 space-y-2">
+                            {bookings.map((booking) => (
+                                <div
+                                    key={booking.id}
+                                    className="flex items-center gap-2 p-2 border rounded-md hover:bg-gray-100 cursor-pointer"
+                                >
+                                    <img
+                                        src={booking.vehicle?.image_url || booking.vehicle?.image || "/placeholder.svg"}
+                                        alt={booking.vehicle?.name || "Fordon"}
+                                        className="h-10 w-14 rounded-md object-cover"
+                                    />
+                                    <div className="text-xs">
+                                        <div className="font-medium">{booking.vehicle?.name || "Ingen bil"}</div>
+                                        <div>{booking.firstname} {booking.surname}</div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+
+                        <div className="flex-1 overflow-x-auto">
+                            <FullCalendar
+                                plugins={[dayGridPlugin, interactionPlugin]}
+                                initialView="dayGridMonth"
+                                events={events}
+                                eventClick={handleEventClick}
+                                dayCellContent={(arg) => {
+                                    // Filter bookings for this specific day
+                                    const dayBookings = bookings.filter(
+                                        (b) => b.pickup_date.split("T")[0] === arg.dateStr
+                                    );
+
+                                    return (
+                                        <div className="flex flex-col">
+                                            <div className="font-semibold">{arg.dayNumberText}</div>
+                                            {dayBookings.map((b) => (
+                                                <div
+                                                    key={b.id}
+                                                    className="text-xs mt-1 p-1 border rounded bg-gray-50"
+                                                >
+                                                    {b.vehicle?.name || "Ingen bil"} - {b.firstname}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    );
+                                }}
+                            />
+
+                        </div>
+                    </div>
+                </div>
 
                 {isModalOpen && selectedEvent && (
                     <div className="fixed inset-0 z-50 flex items-start justify-end bg-black/50 backdrop-blur-sm">
