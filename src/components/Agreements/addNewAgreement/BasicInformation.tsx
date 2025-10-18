@@ -114,7 +114,7 @@ const BasicInformation: React.FC<Props> = ({
         <div>
           <label className="block text-sm text-gray-600 mb-1">
             {location.pathname === "/add-new-sales-agreement"
-              ? "Sales Date"
+              ? "Datum"
               : "Purchase Date"}
           </label>
           <input
@@ -228,34 +228,33 @@ const BasicInformation: React.FC<Props> = ({
               )}
             </div>
             <div>
-              <label className="block text-sm text-gray-600 mb-1">PEP</label>
-              <select
-                name="pep"
-                value={form.pep}
-                onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white"
-              >
-                <option value="">Select PEP</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
+              <label className="block text-sm text-gray-600 mb-1">Körkortsnummer</label>
+                <input
+                  type="text"
+                  name="Körkortsnummer"
+                  placeholder="Körkortsnummer"
+                  value={form.pep || ""}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+
             </div>
             <div>
               <label className="block text-sm text-gray-600 mb-1">
-                verifierad
+                Giltighetstid Körkort
               </label>
-              <select
-                name="verification"
-                value={form.verification}
-                onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white"
-              >
-                <option value="">Select verification</option>
-                <option value="passport">Passport</option>
-                <option value="drivingLicense">Driver license</option>
-                <option value="digitalId">Digital ID</option>
-                <option value="id">ID</option>
-              </select>
+              <input
+                  type="text"
+                  name="verification"
+                  placeholder="Giltighetstid Körkort"
+                  value={form.verification || ""}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
+                  className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
             </div>
           </>
         )}

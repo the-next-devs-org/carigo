@@ -512,7 +512,7 @@ const AddNewSalesAgreement = () => {
           onClick={() => navigate("/agreements")}
         >
           <BackArrowIcon />
-          <span className="ml-2">Create Sales Agreement</span>
+          <span className="ml-2">Skapa uthyrningsavtal</span>
         </button>
       </div>
 
@@ -529,8 +529,8 @@ const AddNewSalesAgreement = () => {
             onSearch={handleSearchTradeVehicle}
           />
           <SalesInformation form={form} handleChange={handleChange} />
-          <VehicleInformation form={form} handleChange={handleChange} />
           <DeliveryInformation form={form} handleChange={handleChange} />
+          <VehicleInformation form={form} handleChange={handleChange} />
           <PaymentInformation form={form} handleChange={handleChange} />
           <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
             <button

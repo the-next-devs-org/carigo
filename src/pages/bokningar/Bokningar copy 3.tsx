@@ -5,15 +5,24 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import type { EventClickArg } from "@fullcalendar/core";
 import { BACKEND_API_ENDPOINT, xApiKey } from "../../api/config";
-// Define the Vehicle interface
 interface Vehicle {
     id: number;
+    user_id: number;
     name: string;
     brand: string;
     category: string;
+    year: number;
+    color: string;
+    registration_number: string;
     price_per_day: number;
+    available: boolean;
+    description: string;
     image: string;
     status: string;
+    origin_market: string;
+    date: string;
+    createdAt: string;
+    updatedAt: string;
 }
 
 interface Package {
@@ -132,66 +141,6 @@ const Bokningar = () => {
         setIsModalOpen(true);
     };
 
-    const [vehicles, setVehicles] = useState<Vehicle[]>([]);
-
-
-    const mockVehicles = [
-        {
-            id: 1,
-            name: "Audi S6L Maserati",
-            brand: "Audi",
-            category: "Large Sedan",
-            price_per_day: 299,
-            image: "https://images.unsplash.com/photo-1606611013016-969c19d4a42f?w=150&h=120&fit=crop",
-            status: "Available"
-        },
-        {
-            id: 2,
-            name: "ABC BMW X5",
-            brand: "BMW",
-            category: "Large Premium",
-            price_per_day: 349,
-            image: "https://images.unsplash.com/photo-1552820728-8ac41f1ce891?w=150&h=120&fit=crop",
-            status: "Booked"
-        },
-        {
-            id: 3,
-            name: "Audi CD34",
-            brand: "Audi",
-            category: "Premium Large",
-            price_per_day: 279,
-            image: "https://images.unsplash.com/photo-1549399542-7e3f8b83ad38?w=150&h=120&fit=crop",
-            status: "Available"
-        },
-        {
-            id: 4,
-            name: "ABC S4 Audi",
-            brand: "Audi",
-            category: "Small Max",
-            price_per_day: 199,
-            image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=150&h=120&fit=crop",
-            status: "Booked"
-        },
-        {
-            id: 5,
-            name: "M5332PQC Tesla",
-            brand: "Tesla",
-            category: "Model S",
-            price_per_day: 399,
-            image: "https://images.unsplash.com/photo-1560958089-b8a63c50ce20?w=150&h=120&fit=crop",
-            status: "Available"
-        }
-    ];
-
-    useEffect(() => {
-        setVehicles(mockVehicles);
-    }, []);
-
-    const handleVehicleClick = (vehicle: Vehicle) => {
-        // Your logic here, e.g., open a modal or set selected vehicle
-        console.log(vehicle);
-    };
-
     return (
         <div className="max-w-full mx-auto font-plus-jakarta p-4">
             <section
@@ -255,63 +204,18 @@ const Bokningar = () => {
                 </div>
             </section>
             <div className="p-4 bg-white rounded-2xl shadow-md">
-                <div className="flex">
-                    <div>
-                        {vehicles.map((vehicle) => (
-                            <div
-                                key={vehicle.id}
-                                onClick={() => handleVehicleClick(vehicle)}
-                                className="p-3 rounded-lg border border-gray-200 hover:bg-blue-50 cursor-pointer transition-all hover:border-blue-300"
-                            >
-                                {/* Vehicle Image */}
-                                <img
-                                    src={vehicle.image}
-                                    alt={vehicle.name}
-                                    className="w-full h-24 object-cover rounded-md mb-2"
-                                />
-                                
-                                {/* Vehicle Details */}
-                                <div className="space-y-1">
-                                    <div className="text-sm font-bold text-gray-800 line-clamp-1">
-                                        {vehicle.name}
-                                    </div>
-                                    <div className="text-xs text-gray-600">
-                                        {vehicle.brand}
-                                    </div>
-                                    <div className="text-xs text-gray-500">
-                                        {vehicle.category}
-                                    </div>
-                                    <div className="flex items-center justify-between pt-1">
-                                        <span className="text-xs font-semibold text-blue-600">
-                                            {vehicle.price_per_day} SEK/dag
-                                        </span>
-                                        <span className={`text-xs px-2 py-1 rounded font-medium ${
-                                            vehicle.status === 'Available' 
-                                                ? 'bg-green-100 text-green-700' 
-                                                : 'bg-red-100 text-red-700'
-                                        }`}>
-                                            {vehicle.status}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div>
-                        <FullCalendar
-                            plugins={[dayGridPlugin, interactionPlugin]}
-                            initialView="dayGridMonth"
-                            headerToolbar={{
-                                left: "prev,next today",
-                                center: "title",
-                                right: "dayGridMonth,dayGridWeek,dayGridDay",
-                            }}
-                            events={events}
-                            eventClick={handleEventClick}
-                            height="auto"
-                        />
-                    </div>
-                </div>
+                <FullCalendar
+                    plugins={[dayGridPlugin, interactionPlugin]}
+                    initialView="dayGridMonth"
+                    headerToolbar={{
+                        left: "prev,next today",
+                        center: "title",
+                        right: "dayGridMonth,dayGridWeek,dayGridDay",
+                    }}
+                    events={events}
+                    eventClick={handleEventClick}
+                    height="auto"
+                />
 
                 {isModalOpen && selectedEvent && (
                     <div className="fixed inset-0 z-50 flex items-start justify-end bg-black/50 backdrop-blur-sm">

@@ -64,14 +64,14 @@ const RecentAgreements = () => {
     <div className="bg-white rounded-[20px] p-6 dashboard-cards">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-[20px] font-semibold text-[#000814] font-plus-jakarta">
-          Recent Agreements
+          Uthyrda fordon
         </h2>
-        <button
+        {/* <button
           className="text-[#FF8B1F] text-sm font-semibold font-plus-jakarta hover:text-[#e67b15] border-b border-[#FF8B1F] cursor-pointer"
           onClick={() => navigate("/agreements")}
         >
           See More
-        </button>
+        </button> */}
       </div>
 
       <div className="overflow-x-auto overflow-y-auto max-h-[300px]">
@@ -79,16 +79,16 @@ const RecentAgreements = () => {
           <thead className="sticky top-0 z-10">
             <tr className="bg-[#F0F7FF] rounded-lg text-left">
               <th className="py-3 px-4 text-sm font-medium text-[#5E636B] font-plus-jakarta rounded-l-lg">
-                Agreement ID
+                Reg nr
               </th>
               <th className="py-3 px-4 text-sm font-medium text-[#5E636B] font-plus-jakarta">
-                Customer
+                Kund
               </th>
               <th className="py-3 px-4 text-sm font-medium text-[#5E636B] font-plus-jakarta">
-                Vehicle
+                Upphämtningsdatum
               </th>
               <th className="py-3 px-4 text-sm font-medium text-[#5E636B] font-plus-jakarta rounded-r-lg">
-                Date
+                Återlämningsdatum
               </th>
             </tr>
           </thead>

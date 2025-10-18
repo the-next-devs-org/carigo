@@ -28,26 +28,35 @@ import ReturnedCars from "../pages/returnedCars/ReturnedCars";
 import ManageBookings from "../pages/bookings/ManageBookings";
 import ShowCars from "../pages/showCars/ShowCars";
 import forfragningar from "../pages/forfragningar/forfragningar";
-import Avtalbetalning from "../pages/avtalbetalning/avtalbetalning";
 import Bokningar from "../pages/bokningar/Bokningar";
+import Cars from "../pages/cars/cars";
+import Services from "../pages/services/Services";
+import AboutUs from "../pages/aboutUs/AboutUs";
+import Support from "../pages/support/Support";
+import CarDetails from "../pages/CarDetails/CarDetails";
 
 const role = localStorage.getItem("role");
 
 export const publicRoutes = [
   { path: "/", component: LandingPage },
+  { path: "/cars", component: Cars },
+  { path: "/services", component: Services },
+  { path: "/about", component: AboutUs },
+  { path: "/support", component: Support },
   { path: "/manage-my-booking-info", component: ManageBookings },
   { path: "/show-cars", component: ShowCars },
   { path: "/login", component: Login },
   { path: "/signup", component: SignUp },
-  { path: "/agreement-sign/:agreementID", component: AgreementSign }, // Public access route - no authentication required
-  { path: "*", component: Login }, // Wildcard should be LAST to catch unmatched routes
+  { path: "/agreement-sign/:agreementID", component: AgreementSign }, 
+  { path: "/car/:id", component: CarDetails },
+  { path: "*", component: Login },
 ];
 
 export const privateRoutes = [
-  { path: "*", component: role === "Admin" ? Dashboard : SuperAdminDashboard }, // Fallback route
+  { path: "*", component: role === "Admin" ? Dashboard : SuperAdminDashboard }, 
   ...(role === "Admin"
     ? [{ path: "/dashboard", component: Dashboard }]
-    : [{ path: "/admin-dashboard", component: SuperAdminDashboard }]), // Fallback route
+    : [{ path: "/admin-dashboard", component: SuperAdminDashboard }]), 
   { path: "/kundregister", component: Customers },
   ...(role === "Admin"
     ? [{ path: "/vehicles", component: Vehicles }]

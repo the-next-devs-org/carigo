@@ -110,12 +110,10 @@ const DualRangeSlider: React.FC<{
   );
 };
 
-import { BACKEND_API_ENDPOINT } from "../../api/config";
-
 const Cars: React.FC = () => {
   const [carsData, setCarsData] = useState<Car[]>([]);
   useEffect(() => {
-    fetch(`${BACKEND_API_ENDPOINT}getAllVehicles`)
+    fetch("http://localhost:3002/api/getAllVehicles")
       .then((res) => res.json())
       .then((data) => {
         if (data.success && Array.isArray(data.data)) {
@@ -123,8 +121,6 @@ const Cars: React.FC = () => {
         }
       });
   }, []);
-
-  console.log("Fetched Cars Datassssss:", carsData);
 
   const [priceMin, setPriceMin] = useState(5990);
   const [priceMax, setPriceMax] = useState(24990);
@@ -224,35 +220,46 @@ const Cars: React.FC = () => {
           <div className="flex-1">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredCars.map((car) => (
-                <Link
-                  to={`/car/${car.id}`}
+                <div
                   key={car.id}
-                  className="no-underline"
+                  className="bg-white rounded-lg overflow-hidden border border-gray-200 hover:shadow-md transition-shadow"
                 >
-                  <div
-                    className={`relative bg-black rounded-xl overflow-hidden group w-80 cursor-pointer border-4 transition-all duration-300`}
-                  >
-                    <div className="relative h-90 bg-gray-900 rounded-xl">
-                      <img
-                        src={car.image_url}
-                        alt={car.name}
-                        className="w-full h-full object-contain"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                      <div className="absolute top-4 left-4 text-white space-y-1">
-                        <h3 className="text-lg font-bold">{car.name}</h3>
-                        <p className="text-sm opacity-90">{car.brand}</p>
-                        <p className="text-xs opacity-80">{car.category}</p>
-                      </div>
-                      <div className="absolute bottom-4 left-4 text-white font-bold">
-                        ${car.price_per_day} / day
-                      </div>
+                  {/* Car Image */}
+                  <div className="bg-gray-100 h-40 overflow-hidden flex items-center justify-center">
+                    <img
+                      src={car.image}
+                      alt={car.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Car Info */}
+                  <div className="p-4">
+                    <h3 className="font-semibold text-gray-900 mb-1 text-sm">
+                      {car.name}
+                    </h3>
+                    <p className="text-red-500 font-bold text-base mb-3">
+                      Fr {car.price_per_day} kr/dag
+                    </p>
+
+                    {/* Tags and Arrow */}
+                    <div className="flex gap-2 items-center flex-wrap">
+                      <span className="bg-gray-100 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">
+                        {car.brand}
+                      </span>
+                      <span className="bg-gray-100 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">
+                        {car.category}
+                      </span>
+                      <Link
+                        to={`/car/${car.id}`}
+                        className="ml-auto text-teal-700 hover:text-teal-800 transition"
+                      >
+                        <ArrowRight size={20} />
+                      </Link>
                     </div>
                   </div>
-                </Link>
+                </div>
               ))}
-
-
             </div>
           </div>
         </div>

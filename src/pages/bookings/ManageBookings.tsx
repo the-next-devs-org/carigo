@@ -1,22 +1,18 @@
 import { Link } from "react-router-dom";
 import { Car } from "lucide-react";
 
+import Header from "../../components/LandingPage/Header";
+
 const ManageBookings = () => {
   return (
     <div className="flex flex-col min-h-screen bg-white">
       {/* HEADER */}
-      <header className="bg-black py-4 px-6">
-        <div className="max-w-7xl mx-auto flex items-center">
-          <Link to="/" className="text-2xl font-bold">
-            <span className="text-white">S</span>
-            <span className="text-orange-500">i</span>
-            <span className="text-white">XT</span>
-          </Link>
-        </div>
-      </header>
+      <Header />
+
 
       {/* MAIN */}
-      <main className="flex-grow px-4 py-12 flex flex-col items-center text-center">
+      <main className="flex flex-col items-center justify-center flex-grow px-4 py-12 mt-24">
+
         <Car className="h-12 w-12 text-orange-500 mb-6" />
         <h1 className="text-3xl font-bold text-gray-900 mb-4">
           Manage My Bookings
@@ -35,7 +31,7 @@ const ManageBookings = () => {
 
       {/* FOOTER */}
       <footer className="bg-black text-white py-6 text-center text-sm">
-        © Sixt 2025 – All rights reserved.
+        © Carigo 2025 – All rights reserved.
       </footer>
     </div>
   );

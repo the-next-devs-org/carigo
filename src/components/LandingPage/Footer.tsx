@@ -1,121 +1,88 @@
+import React from 'react';
+import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
+
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-16">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid md:grid-cols-5 gap-8 mb-12">
+    <footer className="bg-[#F2F2F7] text-white py-12">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          {/* Column 1 - Services */}
           <div>
-            <div className="bg-orange-500 text-white px-4 py-2 font-bold text-xl mb-6 inline-block">
-              Your Logo
-            </div>
-          </div>
-          <div>
-            <h4 className="font-bold mb-6 text-lg">SIXT services</h4>
-            <ul className="space-y-3 text-sm text-gray-400">
-              <li>
-                <a href="#" className="hover:text-white transition duration-200">
-                  Car rental
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition duration-200">
-                  Truck rental
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition duration-200">
-                  Bus for business
-                </a>
-              </li>
+            <h4 className="text-sm font-semibold mb-4 text-black">Våra tjänster</h4>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#" className="text-[#000000b3] hover:text-white transition">Våra bilar</a></li>
+              <li><a href="#" className="text-[#000000b3] hover:text-white transition">Om oss</a></li>
+              <li><a href="#" className="text-[#000000b3] hover:text-white transition">Support</a></li>
             </ul>
           </div>
+
+          {/* Column 2 - Help */}
           <div>
-            <h4 className="font-bold mb-6 text-lg">Help & other</h4>
-            <ul className="space-y-3 text-sm text-gray-400">
-              <li>
-                <a href="#" className="hover:text-white transition duration-200">
-                  Rental information
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition duration-200">
-                  Environmental policy
-                </a>
-              </li>
+            <h4 className="text-sm font-semibold mb-4 text-black">Kontakt</h4>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#" className="text-[#000000b3] hover:text-white transition">Telefonnummer</a></li>
+              <li><a href="#" className="text-[#000000b3] hover:text-white transition">Mailadress</a></li>
             </ul>
           </div>
-          <div className="md:col-span-2">
-            <div className="flex space-x-4 mb-6">
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center transition duration-200"
-              >
-                <span className="text-sm font-bold">f</span>
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center transition duration-200"
-              >
-                <span className="text-sm font-bold">ig</span>
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center transition duration-200"
-              >
-                <span className="text-sm font-bold">in</span>
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-full flex items-center justify-center transition duration-200"
-              >
-                <span className="text-sm font-bold">X</span>
-              </a>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-12 h-8 bg-gray-800 rounded-lg border border-gray-700 flex items-center justify-center">
-                  <span className="text-xs">📱</span>
-                </div>
-                <span className="text-sm text-gray-400">App Store</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-12 h-8 bg-gray-800 rounded-lg border border-gray-700 flex items-center justify-center">
-                  <span className="text-xs">▶</span>
-                </div>
-                <span className="text-sm text-gray-400">Google Play</span>
-              </div>
-            </div>
+
+          {/* Column 3 - Contact Info */}
+          <div>
+            <h4 className="text-sm font-semibold mb-4 text-black">Villkor</h4>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#" className="text-[#000000b3] hover:text-white transition">Personuppgifter</a></li>
+              <li><a href="#" className="text-[#000000b3] hover:text-white transition">Cookies</a></li>
+              <li><a href="#" className="text-[#000000b3] hover:text-white transition">Uthyrningspolicy</a></li>
+            </ul>
+          </div>
+
+          {/* Column 4 - Company Info */}
+          <div>
+            <h4 className="text-sm font-semibold mb-4 text-black">Carigo AB</h4>
+            <p className="text-sm text-[#000000b3] mb-2">Carigo Sverige AB</p>
+            <p className="text-sm text-[#000000b3] mb-2">Organisations nr: 556721764</p>
+            <p className="text-sm text-[#000000b3] mb-2">Sveavägen 53</p>
+            <p className="text-sm text-[#000000b3] mb-6">111 44 Stockholm</p>
+            <p className="text-sm text-[#000000b3]">Öppet alla dagar 08-18</p>
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-gray-800 pt-8">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-4 lg:space-y-0">
-            <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-gray-400">
-              <a href="#" className="hover:text-white transition duration-200">
-                Contact
-              </a>
-              <a href="#" className="hover:text-white transition duration-200">
-                Rental information
-              </a>
-              <a href="#" className="hover:text-white transition duration-200">
-                Company information
-              </a>
-              <a href="#" className="hover:text-white transition duration-200">
-                Privacy and Cookie Policy
-              </a>
-              <a href="#" className="hover:text-white transition duration-200">
-                Terms
-              </a>
-              <a href="#" className="hover:text-white transition duration-200">
-                Cookie settings
-              </a>
-              <a href="#" className="hover:text-white transition duration-200">
-                Accessibility
-              </a>
-            </div>
-            <div className="text-sm text-gray-400">© Sixt 2024</div>
+        {/* Social Media & Payment Icons */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
+          {/* Social Icons */}
+          <div className="flex items-center gap-4">
+            <a href="#" className="text-[#000000b3] hover:text-white transition">
+              <Youtube className="w-5 h-5" />
+            </a>
+            <a href="#" className="text-[#000000b3] hover:text-white transition">
+              <Facebook className="w-5 h-5" />
+            </a>
+            <a href="#" className="text-[#000000b3] hover:text-white transition">
+              <Instagram className="w-5 h-5" />
+            </a>
+            <a href="#" className="text-[#000000b3] hover:text-white transition">
+              <Linkedin className="w-5 h-5" />
+            </a>
+          </div>
+
+         
+        </div>
+
+        {/* Trust Badge */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-8">
+          <div className="text-sm text-[#000000b3] max-w-xl">
+            <p>Vårt företag är med väl högkvalificerade på arbetsområden från Carigo.</p>
+            <p className="mt-2">Eftersom sätt registrerade du har vårt medlemsskap godkänner att vi får användningspolicys.</p>
           </div>
         </div>
+
+        {/* Logo */}
+        <div className="flex justify-center mb-8">
+          <div className="flex items-center gap-2">
+            <span className="text-3xl font-bold tracking-wider text-black">CARIGO</span>
+          </div>
+        </div>
+        
       </div>
     </footer>
   );

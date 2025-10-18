@@ -80,7 +80,7 @@ const StatCard: React.FC<StatCardProps> = ({
 const DashboardStats = () => {
   const [stats, setStats] = useState([
     {
-      title: "Total Payments",
+      title: "Antal förfrågningar",
       value: "0",
       subtitle: "This Month",
       color: "text-blue-600",
@@ -90,7 +90,7 @@ const DashboardStats = () => {
       key: "payments",
     },
     {
-      title: "Total Vehicles",
+      title: "Antal bokningar",
       value: "0",
       subtitle: "0% Active",
       color: "text-green-600",
@@ -100,7 +100,7 @@ const DashboardStats = () => {
       key: "vehicles",
     },
     {
-      title: "Total Revenue",
+      title: "Uthyrda fordon",
       value: "0",
       subtitle: "(kr) This Month",
       color: "text-purple-600",
@@ -110,7 +110,7 @@ const DashboardStats = () => {
       key: "revenue",
     },
     {
-      title: "Pending Agreements",
+      title: "Fordonsflotta",
       value: "0",
       subtitle: "Awaiting Action",
       color: "text-gray-600",

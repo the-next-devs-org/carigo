@@ -191,34 +191,34 @@ const InquiryCard: React.FC<InquiryCardProps> = ({ id, name, date, createdAt, he
                   <p>Loading details...</p>
                 ) : details?.data ? (
                   <div className="space-y-2">
-                    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
+                    <div className="max-w-sm bg-[#F2F2F7] border border-gray-200 rounded-lg shadow-lg  overflow-hidden">
                       <img
                         className="w-full h-48 object-cover"
                         src={details.data.vehicle?.image_url || 'https://via.placeholder.com/400x200?text=No+Image'}
                         alt={details.data.vehicle?.name}
                       />
                       <div className="p-5">
-                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                        <h2 className="text-2xl font-bold text-black mb-2">
                           {details.data.vehicle?.name} ({details.data.vehicle?.year})
                         </h2>
 
-                        <p className="text-gray-700 dark:text-gray-300 mb-2">
+                        <p className="text-black mb-2">
                           <strong>Brand:</strong> {details.data.vehicle?.brand} | <strong>Model:</strong> {details.data.vehicle?.model} | <strong>Category:</strong> {details.data.vehicle?.category}
                         </p>
 
-                        <p className="text-gray-700 dark:text-gray-300 mb-2">
+                        <p className="text-black mb-2">
                           <strong>Color:</strong> {details.data.vehicle?.color} | <strong>Fuel:</strong> {details.data.vehicle?.fuel_type} | <strong>Transmission:</strong> {details.data.vehicle?.transmission}
                         </p>
 
-                        <p className="text-gray-700 dark:text-gray-300 mb-2">
+                        <p className="text-black mb-2">
                           <strong>Seats:</strong> {details.data.vehicle?.number_of_seats} | <strong>Doors:</strong> {details.data.vehicle?.number_of_doors} | <strong>Mileage:</strong> {details.data.vehicle?.mileage} km
                         </p>
 
-                        <p className="text-gray-700 dark:text-gray-300 mb-2">
+                        <p className="text-black mb-2">
                           <strong>Price per day:</strong> {details.data.vehicle?.price_per_day} SEK | <strong>Price per week:</strong> {details.data.vehicle?.price_per_week} SEK
                         </p>
 
-                        <p className="text-gray-700 dark:text-gray-300 mb-2">
+                        <p className="text-black mb-2">
                           {details.data.vehicle?.short_description}
                         </p>
 
@@ -238,9 +238,9 @@ const InquiryCard: React.FC<InquiryCardProps> = ({ id, name, date, createdAt, he
                     </div>
 
                     <div className="space-y-2">
-                      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700 overflow-hidden">
+                      <div className="max-w-sm bg-[#F2F2F7] border border-gray-200 rounded-lg shadow-lg  overflow-hidden">
                         <div className="p-5">
-                          <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                          <h2 className="text-xl font-bold text-black mb-2">
                             Other Information
                           </h2>
                           <p><strong>Email:</strong> {details.data.booking?.email}</p>
@@ -437,7 +437,7 @@ const Forfragningar: React.FC = () => {
           iconBgColor="bg-green-100"
         />
         <StatCard
-          title="Offerförlinje Månad"
+          title="Omsättning"
           value={`${filteredInquiries.reduce((sum, i) => sum + (Number(i.amount) || 0), 0).toLocaleString()} SEK`}
           icon={<TrendingUp size={24} className="text-green-600" />}
           iconBgColor="bg-green-100"
@@ -449,7 +449,7 @@ const Forfragningar: React.FC = () => {
       <div className="flex flex-wrap gap-2">
         <div className="flex flex-wrap gap-2">
           Filter :
-          {["Alla", "Nya Förfrågningar", "Behandlas", "Bokade"].map((filter, index) => (
+          {["Nya Förfrågningar", "Behandlas", "Bokade"].map((filter, index) => (
             <button
               key={index}
               onClick={() => setActiveFilter(filter)}

@@ -83,25 +83,10 @@ const AllAgreements = () => {
           <div className="relative">
             <button
               className="bg-blue-600 hover:bg-blue-700 cursor-pointer text-white px-4 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors w-fit"
-              onClick={() => setShowDropdown((prev) => !prev)}
+              onClick={() => navigate("/add-new-sales-agreement")}
             >
               <span className="text-lg leading-none mb-1">+</span>
-              Nytt avtal
-              <svg
-                className={`ml-2 w-4 h-4 transition-transform ${
-                  showDropdown ? "rotate-180" : ""
-                }`}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
+              Nytt avtal 
             </button>
             {showDropdown && (
               <div className="absolute sm:right-0 mt-2 w-56 z-50 bg-white border border-gray-200 rounded-lg shadow-lg">

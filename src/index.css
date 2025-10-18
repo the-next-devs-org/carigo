@@ -51,7 +51,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: #FF6B00;
-  background: linear-gradient(180deg, #3B82F6 0%, #8B5CF6 100%);
+  /* background: linear-gradient(180deg, #3B82F6 0%, #8B5CF6 100%); */
+  background: linear-gradient(180deg, #212935 0%, #25213d 100%);
 }
 
 #checkbox2 {

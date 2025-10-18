@@ -50,11 +50,11 @@ const VehicleSearch = () => {
   ];
 
   const statsData = [
-    { label: "Total Flotta", value: 120, iconType: "car" },
-    { label: "Tillgänglig", value: 75, iconType: "check" },
-    { label: "Uthyrd/Bokad", value: 35, iconType: "calendar" },
-    { label: "I Service", value: 10, iconType: "hourglass" },
-    { label: "Kommande Service", value: 5, iconType: "clock" },
+    { label: "Fordonsflotta", value: 120, iconType: "car" },
+    { label: "Tillgängliga", value: 75, iconType: "check" },
+    { label: "Bokade", value: 35, iconType: "calendar" },
+    { label: "Uthyrda", value: 10, iconType: "hourglass" },
+    // { label: "Kommande Service", value: 5, iconType: "clock" },
   ];
 
   const getAllVehiclesfullUrl = `${BACKEND_API_ENDPOINT}getAllVehicles`;
@@ -263,10 +263,10 @@ const VehicleSearch = () => {
 
       <main className="mx-auto max-w-6xl px-5 py-8">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-xl font-semibold text-pretty">Pristruktur</h1>
+          <h1 className="text-xl font-semibold text-pretty">Fordonsflotta</h1>
           <button
             onClick={handleOpenModal}
-            className="bg-blue-600 text-white px-[10px] py-[8px] rounded-[10px] hover:bg-blue-700 transition">
+            className="bg-[#0B153C] text-white px-[10px] py-[8px] rounded-[10px] hover:bg-blue-700 transition">
             Lägg till fordon
           </button>
           <AddNewVehicle
@@ -420,7 +420,7 @@ const VehicleSearch = () => {
 
                   {/* Pristruktur */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Pristruktur</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Fordonsflotta</label>
                     <div className="flex items-center gap-2">
                       <input type="text" value={`Pris/dygn: ${currentCar_xyz.price_per_day}`} readOnly className="flex-1 px-3 py-2 bg-white border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />
                       <input type="text" value={`${currentCar_xyz.extra_km_cost ?? 0} kr/km`} readOnly className="w-24 px-3 py-2 bg-white border border-gray-300 rounded text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" />

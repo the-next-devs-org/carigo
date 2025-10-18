@@ -1,6 +1,6 @@
 // export const LOCAL_HOST = "https://dealer.clubpadel.se";
-// export const LOCAL_HOST = "http://192.168.1.16:3003";
-export const LOCAL_HOST = "http://localhost:3002";
+export const LOCAL_HOST = "http://192.168.1.2:3002";
+// export const LOCAL_HOST = "http://localhost:3002";
 
 export const BACKEND_API_ENDPOINT = `${LOCAL_HOST}/api/`;
 

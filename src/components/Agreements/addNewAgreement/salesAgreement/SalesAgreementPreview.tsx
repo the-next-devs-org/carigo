@@ -44,7 +44,7 @@ export default function SalesAgreementPreview({
       <div className="bg-white rounded-lg p-6 shadow">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-[15px] text-gray-700">
-            Sales Agreement{" "}
+            Uthyrningsavtal {" "}
             <span className="text-gray-400 text-sm">
               (Preview in real time)
             </span>
@@ -59,8 +59,8 @@ export default function SalesAgreementPreview({
         </div>
 
         <div className="mb-6">
-          <h3 className="bg-[#F0F7FF] px-6 py-4">
-            Vehicle Information111
+          <h3 className="text-[18px] font-semibold text-gray-900 mb-3">
+            Vehicle Information
           </h3>
           <div className="grid md:grid-cols-2 grid-cols-1 gap-y-3">
             <div>
@@ -141,10 +141,24 @@ export default function SalesAgreementPreview({
             </div>
             <div>
               <div className="text-[14px] font-medium text-[#91959A]">
-                Sales Date
+                Uthyrningsdatum 
               </div>
               <div className="text-[16px] font-normal text-[#2E343E]">
                 {form.salesDate || "N/A"}
+              </div>
+            </div>
+            <div>
+              <div className="text-[14px] font-medium text-[#91959A]">
+                Mileage (km)
+              </div>
+              <div className="text-[16px] font-normal text-[#2E343E]">
+                {form.mileage || "N/A"}
+              </div>
+            </div>
+            <div>
+              <div className="text-[14px] font-medium text-[#91959A]">Keys</div>
+              <div className="text-[16px] font-normal text-[#2E343E]">
+                {form.numberOfKeys || "N/A"}
               </div>
             </div>
           </div>
@@ -336,7 +350,7 @@ export default function SalesAgreementPreview({
                   </div>
                   <div>
                     <div className="text-[14px] font-medium text-[#91959A]">
-                      PEP
+                      Körkortsnummer
                     </div>
                     <div className="text-[16px] font-normal text-[#2E343E]">
                       {form.pep || "N/A"}
@@ -344,7 +358,7 @@ export default function SalesAgreementPreview({
                   </div>
                   <div>
                     <div className="text-[14px] font-medium text-[#91959A]">
-                      Verification
+                      Giltighetstid Körkort
                     </div>
                     <div className="text-[16px] font-normal text-[#2E343E]">
                       {form.verification || "N/A"}
@@ -529,20 +543,8 @@ export default function SalesAgreementPreview({
                 {form.vatType || "N/A"}
               </div>
             </div>
-            <div>
-              <div className="text-[14px] font-medium text-[#91959A]">
-                Mileage (km)
-              </div>
-              <div className="text-[16px] font-normal text-[#2E343E]">
-                {form.mileage || "N/A"}
-              </div>
-            </div>
-            <div>
-              <div className="text-[14px] font-medium text-[#91959A]">Keys</div>
-              <div className="text-[16px] font-normal text-[#2E343E]">
-                {form.numberOfKeys || "N/A"}
-              </div>
-            </div>
+            
+            
             <div>
               <div className="text-[14px] font-medium text-[#91959A]">
                 Tires

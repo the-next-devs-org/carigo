@@ -16,12 +16,12 @@ const VehicleInformation: React.FC<Props> = ({ form, handleChange }) => {
   return (
     <div className="bg-[#ffffff] rounded-lg p-4 mb-4">
       <h2 className="text-blue-900 font-semibold mb-4">
-        Vehicle Specification
+        Uthyrningsvillkor 
       </h2>
       <div className="grid grid-cols-2 gap-4">
         {/* {(location.pathname === "/add-new-sales-agreement" ||
           location.pathname === "/add-new-purchase-agreement") && ( */}
-        <div>
+        {/* <div>
           <label className="block text-sm text-gray-600 mb-1">VAT Type</label>
           <select
             name="vatType"
@@ -33,11 +33,24 @@ const VehicleInformation: React.FC<Props> = ({ form, handleChange }) => {
             <option value="vbm">VBM</option>
             <option value="vat">VAT</option>
           </select>
-        </div>
+        </div> */}
         {/* )} */}
         <div>
           <label className="block text-sm text-gray-600 mb-1">
-            Mileage (km)
+            Mätarställning vid uthyrning
+          </label>
+          <input
+            type="text"
+            name="mileage"
+            value={form.mileage}
+            onChange={handleChange}
+            placeholder="Vehicle Mileage"
+            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+        <div>
+          <label className="block text-sm text-gray-600 mb-1">
+            Kilometerbegränsning
           </label>
           <input
             type="text"
@@ -79,7 +92,8 @@ const VehicleInformation: React.FC<Props> = ({ form, handleChange }) => {
             <option value="5">5</option>
           </select>
         </div>
-        <div>
+
+        {/* <div>
           <label className="block text-sm text-gray-600 mb-1">Tires</label>
           <select
             name="deck"
@@ -167,7 +181,7 @@ const VehicleInformation: React.FC<Props> = ({ form, handleChange }) => {
               />
             </div>
           </>
-        )}
+        )} */}
       </div>
     </div>
   );

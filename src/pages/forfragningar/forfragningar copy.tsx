@@ -124,7 +124,7 @@ const Forfragningar: React.FC = () => {
           iconBgColor="bg-green-100"
         />
         <StatCard
-          title="Offerförlinje Månad"
+          title="Omsättning "
           value="85 000 SEK"
           icon={<TrendingUp size={24} className="text-green-600" />}
           iconBgColor="bg-green-100"

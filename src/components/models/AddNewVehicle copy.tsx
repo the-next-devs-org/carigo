@@ -608,7 +608,7 @@ const AddNewVehicle: React.FC<AddNewVehicleProps> = ({
             </button>
             <button
               type="submit"
-              className={`w-full bg-blue-700 text-white font-semibold py-2.5 rounded-lg flex justify-center items-center ${
+              className={`w-full bg-[#0B153C] text-white font-semibold py-2.5 rounded-lg flex justify-center items-center ${
                 !hasSearched && !isEditMode
                   ? "opacity-50 cursor-not-allowed"
                   : "hover:bg-blue-800 cursor-pointer"

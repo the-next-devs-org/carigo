@@ -18,12 +18,12 @@ const navItems = [
     icon: <DashboardSidebarIcon className="w-5 h-5 mr-1.5" />,
   },
   {
-    name: "Fordonsregister",
+    name: "Fordonsflotta",
     path: "/vehicles-search",
     icon: <CarFront className="w-5 h-5 mr-1.5" />,
   },
   {
-    name: "forfragningar",
+    name: "Förfrågningar",
     path: "/forfragningar",
     icon: <CustomersSidebarIcon className="w-5 h-5 mr-1.5" />,
   },
@@ -100,7 +100,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, toggleSidebar }) => {
       <div className="flex items-center justify-between px-4 pt-4 pb-4">
         {isOpen || isDesktop ? (
           <a href="/" className="font-bold text-2xl text-white font-plus-jakarta">
-            Caringo
+            Carigo
           </a>
           
         ) : (

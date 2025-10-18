@@ -39,10 +39,10 @@ const TradeVehicle: React.FC<Props> = ({ form, handleChange, onSearch }) => {
   if (location.pathname === "/add-new-sales-agreement") {
     return (
       <div className="bg-[#ffffff] rounded-lg p-4 mb-4">
-        <h2 className="text-blue-900 font-semibold mb-4">Trade-In Vehicle</h2>
+        <h2 className="text-blue-900 font-semibold mb-4">Eventuell Extraförare</h2>
         <div>
           <label className="block text-sm text-gray-600 mb-1">
-            Trade-in Vehicle
+            Extraförare
           </label>
           <select
             name="tradeInVehicle"
@@ -57,9 +57,26 @@ const TradeVehicle: React.FC<Props> = ({ form, handleChange, onSearch }) => {
         </div>
         {form.tradeInVehicle === "yes" && (
           <div className="grid grid-cols-2 gap-4 mt-4">
+            
             <div>
               <label className="block text-sm text-gray-600 mb-1">
-                Registration Number
+                Customer Type
+              </label>
+              <select
+                name="customerType2"
+                value={form.tradeInPurchaseDate}
+                onChange={handleChange}
+                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white"
+              >
+                <option value="">Select customer type</option>
+                <option value="company">Company</option>
+                <option value="private individual">Private Individual</option>
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm text-gray-600 mb-1">
+                Social Security Number
               </label>
               <div className="flex items-center gap-2">
                 <input
@@ -70,7 +87,7 @@ const TradeVehicle: React.FC<Props> = ({ form, handleChange, onSearch }) => {
                     setRegInput(e.target.value);
                     handleChange(e);
                   }}
-                  placeholder="ABC123"
+                  placeholder="Social Security Number"
                   className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <button
@@ -82,58 +99,61 @@ const TradeVehicle: React.FC<Props> = ({ form, handleChange, onSearch }) => {
                 </button>
               </div>
             </div>
+            
+
             <div>
               <label className="block text-sm text-gray-600 mb-1">
-                Purchase Date
+                Körkortsnummer
               </label>
               <input
-                type="date"
-                name="tradeInPurchaseDate"
-                value={form.tradeInPurchaseDate || ""}
-                onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm text-gray-600 mb-1">
-                Purchase Price (SEK)
-              </label>
-              <input
-                type="number"
+                type="text"
                 name="tradeInPurchasePrice"
                 value={form.tradeInPurchasePrice || ""}
                 onChange={handleChange}
-                placeholder="0.00"
+                placeholder="Körkortsnummer"
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div>
               <label className="block text-sm text-gray-600 mb-1">
-                Mileage (km)
+                Giltighetstid Körkort
               </label>
               <input
-                type="number"
+                type="text"
                 name="tradeInMileage"
                 value={form.tradeInMileage || ""}
                 onChange={handleChange}
-                placeholder="0"
+                placeholder="Giltighetstid Körkort"
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div>
               <label className="block text-sm text-gray-600 mb-1">
-                Credit Marking
+               Email Address
               </label>
-              <select
+              <input
+                type="text"
                 name="tradeInCreditMaking"
                 value={form.tradeInCreditMaking || ""}
                 onChange={handleChange}
-                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none bg-white"
-              >
-                <option value="">Select option</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </select>
+                placeholder="Email Address"
+                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+             
+            </div>
+            <div>
+              <label className="block text-sm text-gray-600 mb-1">
+                Telephone Number
+              </label>
+              <input
+                type="text"
+                name="tradeInCreditMakings"
+                value={form.tradeInCreditMakings || ""}
+                onChange={handleChange}
+                placeholder="Telephone Number"
+                className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              
             </div>
             {form.tradeInCreditMaking === "yes" && (
               <div>

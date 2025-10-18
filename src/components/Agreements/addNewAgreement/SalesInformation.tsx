@@ -16,11 +16,11 @@ const SalesInformation: React.FC<Props> = ({ form, handleChange }) => {
   if (location.pathname === "/add-new-sales-agreement") {
     return (
       <div className="bg-[#ffffff] rounded-lg p-4 mb-4">
-        <h2 className="text-blue-900 font-semibold mb-4">Sales Information</h2>
+        <h2 className="text-blue-900 font-semibold mb-4">Uthyrningskostnad</h2>
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block text-sm text-gray-600 mb-1">
-              Sales Price (SEK)
+              Price (SEK)
             </label>
             <input
               type="text"
@@ -45,13 +45,13 @@ const SalesInformation: React.FC<Props> = ({ form, handleChange }) => {
               <option value="bank_transfer">Bank Transfer</option>
               <option value="swish">Swish</option>
               <option value="invoice">Invoice</option>
-              <option value="financing_down">
+              {/* <option value="financing_down">
                 Financing with Down Payment
               </option>
               <option value="financing_no_down">
                 Financing without Down Payment
               </option>
-              <option value="leasing">Leasing</option>
+              <option value="leasing">Leasing</option> */}
             </select>
           </div>
           {(form.paymentMethod === "financing_down" ||
@@ -123,12 +123,48 @@ const SalesInformation: React.FC<Props> = ({ form, handleChange }) => {
           )}
           <div>
             <label className="block text-sm text-gray-600 mb-1">
-              Payment Date
+              Uthyrningsdatum 
             </label>
             <input
               type="date"
               name="paymentDate"
               value={form.paymentDate}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-gray-600 mb-1">
+              Återlämningsdatum 
+            </label>
+            <input
+              type="date"
+              name="paymentDate2"
+              value={form.paymentDate2}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-gray-600 mb-1">
+              Tillägg för självriskeliminering
+            </label>
+            <input
+              type="text"
+              name="paymentDate3"
+              value={form.paymentDate3}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-gray-600 mb-1">
+              Tillägg för självriskreducering
+            </label>
+            <input
+              type="text"
+              name="paymentDate4"
+              value={form.paymentDate4}
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />

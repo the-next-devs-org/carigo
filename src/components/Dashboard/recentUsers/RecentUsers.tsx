@@ -7,7 +7,7 @@ const RecentPayments = () => {
     <div className="bg-white rounded-[20px] p-6 dashboard-cards">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-[20px] font-semibold text-[#000814] font-plus-jakarta">
-          Recent Payments
+          Inkommande förfrågningar
         </h2>
       </div>
 
@@ -16,16 +16,16 @@ const RecentPayments = () => {
           <thead className="sticky top-0 z-10">
             <tr className="bg-[#F0F7FF] rounded-lg text-left">
               <th className="py-3 px-4 text-sm font-medium text-[#5E636B] font-plus-jakarta rounded-l-lg">
-                Customer
+                Reg nr
               </th>
               <th className="py-3 px-4 text-sm font-medium text-[#5E636B] font-plus-jakarta">
-                Amount
+                Kund 
               </th>
               <th className="py-3 px-4 text-sm font-medium text-[#5E636B] font-plus-jakarta">
-                Status
+                Upphämtningsdatum 
               </th>
               <th className="py-3 px-4 text-sm font-medium text-[#5E636B] font-plus-jakarta rounded-r-lg">
-                Payment Date
+                Återlämningsdatum 
               </th>
             </tr>
           </thead>

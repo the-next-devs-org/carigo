@@ -1,148 +1,102 @@
 import { useState } from "react";
-import { Menu, X, Car, Globe } from "lucide-react";
+import { ChevronDown, User, Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useUserProfile } from "../../utils/useUserProfile";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [language, setLanguage] = useState<"SV" | "EN">("SV");
+  const toggleLanguage = () => {
+    setLanguage((prev) => (prev === "SV" ? "EN" : "SV"));
   };
-
-  const { user, loading } = useUserProfile();
-  const token = localStorage.getItem("token");
-
-  const isLoggedIn = !!token && !!user;
-
-  if (loading) return null;
-
   return (
-    <header className="bg-gradient-to-r from-black to-gray-800 text-white px-4 py-3 font-plus-jakarta relative">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Left Side - Hamburger + Logo */}
-        <div className="flex items-center space-x-4">
-          {/* Hamburger Button */}
-          <button
-            onClick={toggleMenu}
-            className="text-white hover:text-orange-500 transition-colors duration-200 cursor-pointer"
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-
-          {/* Logo */}
-          {/* <div className="flex items-center cursor-pointer">
-            <span className="text-2xl font-bold">
-              <span className="text-white">S</span>
-              <span className="text-orange-500">i</span>
-              <span className="text-white">XT</span>
-            </span>
-          </div> */}
-          <div className="flex items-center cursor-pointer">
-            <span className="text-2xl font-bold">
-              <span className="text-white">Your</span>
-              <span className="text-orange-500">Logo</span>
-            </span>
+    <header
+      className="
+        fixed top-2 left-1/2 transform -translate-x-1/2 
+        w-[92%] md:w-[85%] bg-white 
+        border border-white/30 shadow-lg rounded-2xl z-50 
+        transition-all duration-300
+      "
+    >
+      <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
+        {/* Left - Logo */}
+        <a href="/" className="flex items-center">
+          <div className="flex items-center bg-white text-black px-3 py-2 rounded-lg font-bold text-xl gap-2">
+            {/* <img src="/logo.png" alt="logo" className="w-6 h-6" /> */}
+            Carigo
           </div>
-        </div>
 
-        {/* Right Side - Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
-          <Link to="manage-my-booking-info" className="flex items-center gap-2 hover:text-orange-500">
-            <Car size={18} />
-            Manage bookings
-          </Link>
-          <a href="#lang" className="flex items-center gap-2 hover:text-orange-500">
-            <Globe size={18} />
-            EN | kr
-          </a>
-          <div className="flex gap-2">
-            {isLoggedIn ? (
-              <Link
-                to="/dashboard"
-                className="hover:text-orange-500 transition-colors duration-200"
-              >
-                Dashboard
-              </Link>
-            ) : (
-              <>
-                <Link
-                  to="/login"
-                  className="hover:text-orange-500 transition-colors duration-200"
-                >
-                  Log in
-                </Link>
-                <span>|</span>
-                <Link
-                  to="/signup"
-                  className="hover:text-orange-500 transition-colors duration-200"
-                >
-                  Register
-                </Link>
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* Left Sidebar Drawer */}
+        </a>
+        <div className="flex items-center space-x-6">
+          {/* Center - Nav Links (Desktop) */}
+          <nav className="hidden md:flex items-center space-x-8 text-sm font-medium text-white drop-shadow-md">
+            <Link to="/" className="hover:text-[#1612ff] text-black transition-colors">
+              Hem
+            </Link>
+            <Link to="/show-cars" className="hover:text-[#1612ff] text-black transition-colors">
+              Våra bilar 
+            </Link>
+            <Link to="/support" className="hover:text-[#1612ff] text-black transition-colors">
+              Support
+            </Link>
+             <Link to="/about" className="hover:text-[#1612ff] text-black transition-colors">
+              Om oss
+            </Link>
+          </nav>
+          <div
+      onClick={toggleLanguage}
+      className="relative flex items-center bg-gray-100 rounded-full w-40 p-1 cursor-pointer select-none transition-all"
+    >
+      {/* Företag */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-gray-900 text-white transform ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
-          } transition-transform duration-300 ease-in-out`}
+        className={`py-[2px] px-0 flex-1 text-center text-sm font-medium z-10 transition-all ${
+          language === "SV" ? "text-white" : "text-gray-500"
+        }`}
       >
-        {/* Close Button */}
-        <div className="flex justify-between items-center p-4 border-b border-gray-700">
-          <span className="text-lg font-bold">Menu</span>
-          <button onClick={toggleMenu} className="cursor-pointer">
-            <X className="w-6 h-6" />
-          </button>
-        </div>
-
-        {/* Menu Items */}
-        <nav className="flex flex-col gap-4 p-4 text-sm font-medium">
-          <a href="#bookings" className="flex items-center gap-2 hover:text-orange-500">
-            <Car size={18} />
-            Manage bookings
-          </a>
-          <a href="#lang" className="flex items-center gap-2 hover:text-orange-500">
-            <Globe size={18} />
-            EN | kr
-          </a>
-          <div className="flex gap-2">
-            {isLoggedIn ? (
-              <Link
-                to="/dashboard"
-                className="hover:text-orange-500 transition-colors duration-200"
-              >
-                Dashboard
-              </Link>
-            ) : (
-              <>
-                <Link
-                  to="/login"
-                  className="hover:text-orange-500 transition-colors duration-200"
-                >
-                  Log in
-                </Link>
-                <span>|</span>
-                <Link
-                  to="/signup"
-                  className="hover:text-orange-500 transition-colors duration-200"
-                >
-                  Register
-                </Link>
-              </>
-            )}
-          </div>
-        </nav>
+        Företag
       </div>
 
-      {/* Overlay */}
-      {isMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 cursor-pointer"
-          onClick={toggleMenu}
-        />
+      {/* Privat */}
+      <div
+        className={`py-[2px] px-0 flex-1 text-center text-sm font-medium z-10 transition-all ${
+          language === "EN" ? "text-white" : "text-gray-500"
+        }`}
+      >
+        Privat
+      </div>
+
+      {/* Moving background */}
+      <div
+        className={`absolute top-1 left-1 bg-[#0B153C] rounded-[100px] w-[50%] h-[calc(100%-8px)] transition-transform duration-300 ${
+          language === "SV" ? "translate-x-0" : "translate-x-full"
+        }`}
+      ></div>
+    </div>
+
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden mt-2 pb-4 border-t border-white/30 bg-white/20 backdrop-blur-md rounded-b-2xl">
+          <nav className="flex flex-col space-y-3 px-4 pt-3 text-white font-medium">
+            <Link to="/" className="hover:text-teal-300 py-2 transition-colors">
+              Home
+            </Link>
+            <Link to="/cars" className="hover:text-teal-300 py-2 transition-colors">
+              Our Cars
+            </Link>
+            <Link to="/services" className="hover:text-teal-300 py-2 transition-colors">
+              Services
+            </Link>
+            <Link to="/about" className="hover:text-teal-300 py-2 transition-colors">
+              About Us
+            </Link>
+            <Link to="/support" className="hover:text-teal-300 py-2 transition-colors">
+              Support
+            </Link>
+          </nav>
+        </div>
       )}
     </header>
   );

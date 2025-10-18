@@ -1,44 +1,64 @@
-import { Globe, Award, Phone } from "lucide-react";
 
 const Stats = () => {
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-12 text-center">
-          
-          {/* Item 1 */}
-          <div>
-            <div className="w-16 h-16 bg-gray-900 rounded-full mx-auto mb-6 flex items-center justify-center">
-              <Globe className="h-8 w-8 text-white" />
+    <section className="bg-white">
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        {/* Heading */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold leading-snug text-gray-900">
+            Join 10k+ happy drivers <br /> enjoying our car rentals worldwide
+          </h2>
+        </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Card 1 */}
+          <div
+            className="relative rounded-xl overflow-hidden h-80 flex items-end p-6 text-white"
+            style={{
+              backgroundImage: "url('/stats1.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="relative z-10">
+              <h3 className="text-3xl font-semibold">98%</h3>
+              <p className="text-lg font-medium">Konverteringsfrekvens</p>
             </div>
-            <h3 className="font-bold text-xl mb-3">Global reach</h3>
-            <p className="text-gray-600 text-lg">
-              2,000+ SIXT stations in over 105 countries
-            </p>
           </div>
 
-          {/* Item 2 */}
-          <div>
-            <div className="w-16 h-16 bg-gray-900 rounded-full mx-auto mb-6 flex items-center justify-center">
-              <Award className="h-8 w-8 text-white" />
+          {/* Card 2 */}
+          <div
+            className="relative rounded-xl overflow-hidden h-80 flex items-end p-6 text-white"
+            style={{
+              backgroundImage: "url('/stats1.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <div className="absolute inset-0 bg-black/30"></div>
+            <div className="relative z-10">
+              <h3 className="text-3xl font-semibold">20 sekunder</h3>
+              <p className="text-lg font-medium">Genomsnittlig betalningstid</p>
             </div>
-            <h3 className="font-bold text-xl mb-3">Distinctive fleet</h3>
-            <p className="text-gray-600 text-lg">
-              From high-class convertibles to premium SUVs
-            </p>
           </div>
 
-          {/* Item 3 */}
-          <div>
-            <div className="w-16 h-16 bg-gray-900 rounded-full mx-auto mb-6 flex items-center justify-center">
-              <Phone className="h-8 w-8 text-white" />
+          {/* Card 3 */}
+          <div
+            className="relative rounded-xl overflow-hidden h-80 flex items-end p-6 text-white"
+            style={{
+              backgroundImage: "url('/stats1.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="relative z-10">
+              <h3 className="text-3xl font-semibold">100%</h3>
+              <p className="text-lg font-medium">Omedelbar avräkning</p>
             </div>
-            <h3 className="font-bold text-xl mb-3">Exceptional service</h3>
-            <p className="text-gray-600 text-lg">
-              Stress-free, reliable, no hidden costs
-            </p>
           </div>
-
         </div>
       </div>
     </section>

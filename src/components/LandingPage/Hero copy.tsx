@@ -1,9 +1,8 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { MapPin, Calendar, Clock } from "lucide-react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { MapPin, Calendar, Clock } from "lucide-react";
-import Header from "./Header";
-import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
   const [pickupLocation, setPickupLocation] = useState("");
@@ -29,33 +28,22 @@ const Hero = () => {
   };
 
   return (
-    <section
-      className="relative h-[95vh] bg-cover bg-center flex flex-col justify-center"
-      style={{ backgroundImage: "url('/car.png')" }}
-    >
-      {/* dark overlay */}
-      <div className="absolute inset-0 bg-black/40" />
-
-      {/* header */}
-      <div className="relative z-30">
-        <Header />
+    <section className="relative">
+      {/* Background */}
+      <div className="h-96 bg-gray-100 flex items-center justify-center overflow-hidden">
+        <img
+          src="https://img.sixt.com/2800/cd9947ef-d2e3-4c72-b224-7cbe379dfd16.jpg"
+          alt="Mercedes Car"
+          className="w-full h-full object-cover"
+        />
       </div>
 
-      {/* text content (centered vertically) */}
-      <div className="relative z-20 text-center text-white px-4">
-        <h1 className="text-4xl md:text-5xl font-bold mb-3 drop-shadow-xl">
-          Hyr din lösning hos oss
-        </h1>
-        <p className="text-lg md:text-xl text-gray-100 drop-shadow-sm">
-          Boka snabbt. Kör säkert. Alltid utan dolda avgifter.
-        </p>
-      </div>
-
-      {/* booking form (bottom) */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-white rounded-lg shadow-xl p-6 w-full max-w-6xl mx-4 z-10">
+      {/* Booking Form */}
+      <div className="absolute top-6 left-1/2 transform -translate-x-1/2 bg-white rounded-lg shadow-xl p-6 w-full max-w-6xl mx-4 z-10">
         <div className="space-y-4">
-          {/* Locations */}
+          {/* --- Locations --- */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {/* Pickup Location */}
             <div>
               <label className="block text-xs font-medium text-gray-600 mb-2">
                 Pick up car drop off
@@ -72,6 +60,7 @@ const Hero = () => {
               </div>
             </div>
 
+            {/* Return Location */}
             <div>
               <label className="block text-xs font-medium text-gray-600 mb-2">
                 Different drop off location
@@ -79,22 +68,24 @@ const Hero = () => {
               <div className="relative">
                 <input
                   type="text"
+                  placeholder="Other place for return"
                   value={returnLocation}
                   onChange={(e) => setReturnLocation(e.target.value)}
-                  placeholder="Other place for return"
                   className="paddingsetinput w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
                 />
               </div>
             </div>
           </div>
 
-          {/* Dates and Button */}
+          {/* --- Dates and Button --- */}
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 items-end">
+            {/* Pickup Date & Time */}
             <div className="lg:col-span-2">
               <label className="block text-xs font-medium text-gray-600 mb-2">
                 Date of Pick Up
               </label>
               <div className="flex">
+                {/* Date Picker */}
                 <div className="relative flex-1">
                   <Calendar className="absolute left-2 top-3.5 h-4 w-4 text-gray-400 pointer-events-none" />
                   <DatePicker
@@ -109,9 +100,11 @@ const Hero = () => {
                     dateFormat="MMM d, yyyy"
                     placeholderText="Select pickup date"
                     className="w-full pl-8 pr-2 py-3 border border-gray-300 rounded-l-md focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm cursor-pointer"
-                    onSelect={(date) => setPickupDate(date)}
+                    onSelect={(date) => setPickupDate(date)} // allows reselecting
+                    onClick={(e) => e.currentTarget.blur()} // ensure calendar opens again
                   />
                 </div>
+                {/* Time */}
                 <div className="relative flex-1">
                   <Clock className="absolute left-2 top-3.5 h-4 w-4 text-gray-400" />
                   <input
@@ -124,11 +117,13 @@ const Hero = () => {
               </div>
             </div>
 
+            {/* Return Date & Time */}
             <div className="lg:col-span-2">
               <label className="block text-xs font-medium text-gray-600 mb-2">
                 Date of Return
               </label>
               <div className="flex">
+                {/* Date Picker */}
                 <div className="relative flex-1">
                   <Calendar className="absolute left-2 top-3.5 h-4 w-4 text-gray-400 pointer-events-none" />
                   <DatePicker
@@ -138,8 +133,10 @@ const Hero = () => {
                     dateFormat="MMM d, yyyy"
                     placeholderText="Select return date"
                     className="w-full pl-8 pr-2 py-3 border border-gray-300 rounded-l-md focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm cursor-pointer"
+                    onClick={(e) => e.currentTarget.blur()} // reopen calendar
                   />
                 </div>
+                {/* Time */}
                 <div className="relative flex-1">
                   <Clock className="absolute left-2 top-3.5 h-4 w-4 text-gray-400" />
                   <input
@@ -152,10 +149,11 @@ const Hero = () => {
               </div>
             </div>
 
+            {/* Button */}
             <div>
               <button
                 onClick={handleSearch}
-                className="w-full bg-[#0B153C]  text-white py-3.5 rounded-[100px] font-semibold transition duration-200"
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3.5 rounded-md font-semibold transition duration-200"
               >
                 View fleet
               </button>

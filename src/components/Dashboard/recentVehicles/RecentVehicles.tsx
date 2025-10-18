@@ -47,14 +47,14 @@ const RecentVehicles = () => {
     <div className="bg-white rounded-[20px] p-6 dashboard-cards">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-[20px] font-semibold text-[#000814] font-plus-jakarta">
-          Recent Vehicles
+          Bokade fordon
         </h2>
-        <button
+        {/* <button
           onClick={() => navigate("/vehicles")}
           className="text-[#FF8B1F] text-sm font-semibold font-plus-jakarta hover:text-[#e67b15] border-b border-[#FF8B1F] cursor-pointer"
         >
           See More
-        </button>
+        </button> */}
       </div>
 
       <div className="overflow-x-auto overflow-y-auto max-h-[300px]">
@@ -62,16 +62,16 @@ const RecentVehicles = () => {
           <thead className="sticky top-0 z-10">
             <tr className="bg-[#F0F7FF] rounded-lg text-left">
               <th className="py-3 px-4 text-sm font-medium text-[#5E636B] font-plus-jakarta rounded-l-lg">
-                Vehicle
+                Reg nr
               </th>
               <th className="py-3 px-4 text-sm font-medium text-[#5E636B] font-plus-jakarta">
-                Year
+                Kund
               </th>
               <th className="py-3 px-4 text-sm font-medium text-[#5E636B] font-plus-jakarta">
-                Status
+                Upphämtningsdatum
               </th>
               <th className="py-3 px-4 text-sm font-medium text-[#5E636B] font-plus-jakarta rounded-r-lg">
-                Price
+                Återlämningsdatum 
               </th>
             </tr>
           </thead>

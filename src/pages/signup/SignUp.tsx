@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { makePostRequest } from "../../api/Api";
+import Footer from "../../components/LandingPage/Footer";
+import Header from "../../components/LandingPage/Header";
 
 const SignUp = () => {
   const [firstName, setFirstName] = useState("");
@@ -42,22 +44,11 @@ const SignUp = () => {
     <div className="flex flex-col min-h-screen bg-white">
       {/* MAIN CONTENT */}
 
-      <header className="bg-black py-4 px-6">
-        <div className="max-w-7xl mx-auto flex items-center">
-          <div className="flex items-center cursor-pointer">
-            <Link to="/">
-              <span className="text-2xl font-bold">
-                <span className="text-white">S</span>
-                <span className="text-orange-500">i</span>
-                <span className="text-white">XT</span>
-              </span>
-            </Link>
-          </div>
-        </div>
-      </header>
+      <Header />
 
 
-      <main className="flex flex-col items-center justify-center flex-grow px-4 py-12">
+      <main className="flex flex-col items-center justify-center flex-grow px-4 py-12 mt-24">
+
         <div className="w-full max-w-md">
           <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
@@ -125,7 +116,7 @@ const SignUp = () => {
             {/* Continue Button */}
             <button
               type="submit"
-              className="w-full flex justify-center items-center px-4 py-3.5 font-semibold text-white bg-orange-500 rounded-md hover:bg-orange-600 disabled:opacity-50"
+              className="cursor-pointer w-full flex justify-center items-center px-4 py-3.5 font-semibold text-white bg-orange-500 rounded-md hover:bg-orange-600 disabled:opacity-50"
               disabled={isLoading}
             >
               {isLoading ? (
@@ -138,25 +129,18 @@ const SignUp = () => {
               )}
             </button>
           </form>
+          <div className="mt-6 text-center border-t border-gray-200 pt-6">
+            <button
+              onClick={() => navigate("/login")}
+              className="cursor-pointer w-full mt-3 py-3 bg-gray-100 rounded-md font-medium text-gray-800 hover:bg-gray-200 transition-colors"
+            >
+              Login
+            </button>
+          </div>
         </div>
       </main>
 
-      <footer className="bg-black text-white py-10">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-6 lg:space-y-0">
-            <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-gray-400">
-              <a href="#" className="hover:text-white">Contact</a>
-              <a href="#" className="hover:text-white">Rental information</a>
-              <a href="#" className="hover:text-white">Company information</a>
-              <a href="#" className="hover:text-white">Privacy and Cookie Policy</a>
-              <a href="#" className="hover:text-white">Terms</a>
-              <a href="#" className="hover:text-white">Cookie settings</a>
-              <a href="#" className="hover:text-white">Accessibility</a>
-            </div>
-            <div className="text-sm text-gray-400">© Sixt 2025</div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
